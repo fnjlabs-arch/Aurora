@@ -1,9 +1,9 @@
 import 'dart:ui';
 
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/user_interface/keyboard_settings/domain/repositories/keyboard_settings_repo.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/domain/repositories/keyboard_settings_repo.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 
 
 class KeyboardSettingsMainlineRepoImpl extends KeyboardSettingsRepo{
@@ -26,37 +26,37 @@ class KeyboardSettingsMainlineRepoImpl extends KeyboardSettingsRepo{
   }
 
   @override
-  Future setColor({required ArMode arMode}) async {
-    await setModeParams(arMode: arMode);
+  Future setColor({required SadShaAuroraMode sadshaAuroraMode}) async {
+    await setModeParams(sadshaAuroraMode: sadshaAuroraMode);
   }
 
   @override
-  Future setMode({required ArMode arMode}) async{
-    await setModeParams(arMode: arMode);
+  Future setMode({required SadShaAuroraMode sadshaAuroraMode}) async{
+    await setModeParams(sadshaAuroraMode: sadshaAuroraMode);
   }
 
   @override
-  Future setSpeed({required ArMode arMode}) async {
-    await setModeParams(arMode: arMode);
+  Future setSpeed({required SadShaAuroraMode sadshaAuroraMode}) async {
+    await setModeParams(sadshaAuroraMode: sadshaAuroraMode);
   }
 
   @override
-  Future setModeParams({required ArMode arMode}) async{
-    arMode.color??=Color(arMode.colorRad!);
+  Future setModeParams({required SadShaAuroraMode sadshaAuroraMode}) async{
+    sadshaAuroraMode.color??=Color(sadshaAuroraMode.colorRad!);
 
     await _ioManager.writeToFile(
         filePath: Constants.kMainlineModuleModePath,
-        content: "1 ${keys[arMode.mode!]} ${arMode.color!.toRed} ${arMode.color!.toGreen} ${arMode.color!.toBlue} ${arMode.speed}");
+        content: "1 ${keys[sadshaAuroraMode.mode!]} ${sadshaAuroraMode.color!.toRed} ${sadshaAuroraMode.color!.toGreen} ${sadshaAuroraMode.color!.toBlue} ${sadshaAuroraMode.speed}");
 
     await _serviceManager.updateService();
 
-    super.setModeParams(arMode: arMode);
+    super.setModeParams(sadshaAuroraMode: sadshaAuroraMode);
   }
 
   @override
-  Future setMainlineStateParams({required ArState arState}) async{
-    await _ioManager.writeToFile(filePath: Constants.kMainlineModuleStatePath,content: "1 ${ArState.arStateToIntString(arState)} 0");
-    super.setMainlineStateParams(arState: arState);
+  Future setMainlineStateParams({required SadShaAuroraState sadshaAuroraState}) async{
+    await _ioManager.writeToFile(filePath: Constants.kMainlineModuleStatePath,content: "1 ${SadShaAuroraState.sadshaAuroraStateToIntString(sadshaAuroraState)} 0");
+    super.setMainlineStateParams(sadshaAuroraState: sadshaAuroraState);
   }
 
 

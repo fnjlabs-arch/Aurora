@@ -1,23 +1,23 @@
-import 'package:aurora/shared/data/isar_manager/models/ar_profile_model.dart';
-import 'package:aurora/shared/data/isar_manager/models/ar_settings_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_profile_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_settings_model.dart';
 
 abstract class IsarManager{
   Future initIsar();
 
   Future writeArSettingsIsar();
-  Future<ArSettingsModel?> readArSettingsIsar();
+  Future<SadShaAuroraSettingsModel?> readArSettingsIsar();
   Future deleteArSettingsIsar(int id);
 
-  Future writeArProfileIsar({ArProfileModel? arProfileModel});
-  Future<ArProfileModel?> readArProfileIsar({int? id});
-  Future<List<ArProfileModel>> readAllArProfileIsar();
+  Future writeArProfileIsar({SadShaAuroraProfileModel? sadshaAuroraProfileModel});
+  Future<SadShaAuroraProfileModel?> readArProfileIsar({int? id});
+  Future<List<SadShaAuroraProfileModel>> readAllArProfileIsar();
   Future deleteArProfileIsar({int? id});
 
-  ArSettingsModel get arSettingsModel;
-  ArProfileModel get arProfileModel;
-  List<ArProfileModel> get allProfiles;
+  SadShaAuroraSettingsModel get sadshaAuroraSettingsModel;
+  SadShaAuroraProfileModel get sadshaAuroraProfileModel;
+  List<SadShaAuroraProfileModel> get allProfiles;
 
-  set arProfileModel(ArProfileModel value);
+  set sadshaAuroraProfileModel(SadShaAuroraProfileModel value);
 
   Future deleteDatabase();
 

@@ -1,8 +1,8 @@
 
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 
 mixin TerminalMixin {
 
@@ -29,13 +29,13 @@ mixin TerminalMixin {
           .first
           .replaceAll('.', '')) ?? 0) >= 610;
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       return false;
     }
   }
 
-  Future<bool> arServiceEnabled() async{
-    return (await _terminalRepo.getOutput(Constants.kArServiceStatus))
+  Future<bool> sadshaAuroraServiceEnabled() async{
+    return (await _terminalRepo.getOutput(Constants.kSadShaAuroraServiceStatus))
         .toString().contains('enabled');
 
   }

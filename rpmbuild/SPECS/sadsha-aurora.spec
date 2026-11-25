@@ -1,10 +1,10 @@
-Name:           aurora
-Version:        aurora_ver
+Name:           sadsha-aurora
+Version:        sadsha_aurora_ver
 Release:        1%{?dist}
 Summary:        A utility to control keyboard back-light and charging threshold for Asus TUF-gaming series laptop
 BuildArch:      x86_64
-URL:            https://github.com/legacyO7/aurora
-License:        GPLv3
+URL:            https://github.com/fnjlabs-arch/Aurora
+License:        MIT
 Source0:        %{name}-%{version}.tar.gz
 
 Requires:       bash, polkit
@@ -18,7 +18,7 @@ A utility to control keyboard back-light and charging threshold for Asus TUF-gam
 %setup -q
 
 %pre
-rm -rf /usr/bin/aurora
+rm -rf /usr/bin/sadsha-aurora
 
 %install
 rm -rf $RPM_BUILD_ROOT

@@ -1,5 +1,5 @@
-import 'package:aurora/user_interface/keyboard_settings/keyboard_settings.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/keyboard_settings.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:equatable/equatable.dart';
 
  class BatteryManagerInit extends Equatable{

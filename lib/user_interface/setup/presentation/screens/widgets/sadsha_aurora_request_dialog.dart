@@ -1,7 +1,7 @@
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/cupertino.dart';
 
-Widget arRequestDialog({
+Widget sadshaAuroraRequestDialog({
   required String title,
   String? buttonTitle1,
   String? buttonTitle2,
@@ -15,13 +15,13 @@ Widget arRequestDialog({
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ArButton(title: buttonTitle1??"Okay",
+          SadShaAuroraButton(title: buttonTitle1??"Okay",
               action: (){
                 if(onClickButton1!=null) {
                   onClickButton1();
                 }
               }),
-          ArButton(
+          SadShaAuroraButton(
               isSelected: true,
               edgeInsets: const EdgeInsets.only(left: 10),
               title: buttonTitle2??"Cancel",

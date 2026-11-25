@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
 abstract class ThemeState{
-  ThemeMode arTheme;
-  ThemeState(this.arTheme);
+  ThemeMode sadshaAuroraTheme;
+  ThemeState(this.sadshaAuroraTheme);
 }
 
 class ThemeStateInit extends ThemeState{
-  ThemeStateInit(super.arTheme);
+  ThemeStateInit(super.sadshaAuroraTheme);
 }
 class ThemeStateSwitch extends ThemeState{
-  ThemeStateSwitch(super.arTheme);
+  ThemeStateSwitch(super.sadshaAuroraTheme);
 }
 
 class ThemeStateSet extends ThemeState{
-  ThemeStateSet(super.arTheme);
+  ThemeStateSet(super.sadshaAuroraTheme);
 }

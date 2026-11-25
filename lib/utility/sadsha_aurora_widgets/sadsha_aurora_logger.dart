@@ -2,20 +2,20 @@ import 'dart:io';
 
 
 
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/foundation.dart';
 
 
-class ArLogger with GlobalMixin{
+class SadShaAuroraLogger with GlobalMixin{
 
-  static ArLogger? _instance;
+  static SadShaAuroraLogger? _instance;
 
-  ArLogger._();
+  SadShaAuroraLogger._();
 
-  factory ArLogger(){
-    _instance??=ArLogger._();
+  factory SadShaAuroraLogger(){
+    _instance??=SadShaAuroraLogger._();
     return _instance!;
   }
 
@@ -57,12 +57,12 @@ class ArLogger with GlobalMixin{
   static void initialize(){
     try{
     Constants.globalConfig.setInstance(kTmpPath: Directory.systemTemp.path);
-    _instance!._logFile=File("${Constants.globalConfig.kTmpPath}/ar.log");
+    _instance!._logFile=File("${Constants.globalConfig.kTmpPath}/sadsha-aurora.log");
     if(_instance!._logFile.existsSync()) {
       _instance!._logFile.deleteSync();
       }
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
     }
   }
 }

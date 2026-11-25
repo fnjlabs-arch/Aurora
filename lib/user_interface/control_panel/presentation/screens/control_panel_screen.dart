@@ -1,12 +1,12 @@
-import 'package:aurora/user_interface/battery_manager/battery_manager.dart';
-import 'package:aurora/user_interface/control_panel/presentation/screens/drawer/ar_drawer.dart';
-import 'package:aurora/user_interface/keyboard_settings/keyboard_settings.dart';
-import 'package:aurora/user_interface/profiles/presentation/screens/profile_panel.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_configuration.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/user_interface/battery_manager/battery_manager.dart';
+import 'package:sadsha_aurora/user_interface/control_panel/presentation/screens/drawer/sadsha_aurora_drawer.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/keyboard_settings.dart';
+import 'package:sadsha_aurora/user_interface/profiles/presentation/screens/profile_panel.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_configuration.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 
 
@@ -35,7 +35,7 @@ class _ControlPanelState extends State<ControlPanelScreen> with GlobalMixin{
   @override
   Widget build(BuildContext context) {
       return Scaffold(
-        endDrawer: const ArDrawer(),
+        endDrawer: const SadShaAuroraDrawer(),
         drawerScrimColor: Colors.transparent,
         endDrawerEnableOpenDragGesture: true,
         key: _scaffoldKey,
@@ -50,18 +50,18 @@ class _ControlPanelState extends State<ControlPanelScreen> with GlobalMixin{
                   IconButton(
                       onPressed: ()=>_openEndDrawer(),
                       icon: const Icon(Icons.settings),
-                      hoverColor: ArColors.transparent,
-                      highlightColor: ArColors.transparent,
-                      splashColor: ArColors.transparent,
+                      hoverColor: SadShaAuroraColors.transparent,
+                      highlightColor: SadShaAuroraColors.transparent,
+                      splashColor: SadShaAuroraColors.transparent,
                   ),
                 ],
               ),
 
-              if(_globalConfig.arMode!=ArModeEnum.mainlineWithoutBatteryManager && _globalConfig.isBatteryManagerEnabled )
+              if(_globalConfig.sadshaAuroraMode!=SadShaAuroraModeEnum.mainlineWithoutBatteryManager && _globalConfig.isBatteryManagerEnabled )
                const Expanded(
                 child:BatteryManagerScreen()
               ),
-              if(_globalConfig.arMode!=ArModeEnum.batteryManager && _globalConfig.isBacklightControllerEnabled)
+              if(_globalConfig.sadshaAuroraMode!=SadShaAuroraModeEnum.batteryManager && _globalConfig.isBacklightControllerEnabled)
                Expanded(
                   flex: super.isMainLine()?3:2,
                   child: const KeyboardSettingsScreen())

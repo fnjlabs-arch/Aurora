@@ -6,7 +6,7 @@ class ProfilesState {
 
   ProfileStates state;
   List<ProfileModel> allProfiles;
-  ArProfileModel? currentProfile;
+  SadShaAuroraProfileModel? currentProfile;
   bool isLoading;
 
   ProfilesState._({
@@ -20,7 +20,7 @@ class ProfilesState {
 
   ProfilesState.loaded({
     required List<ProfileModel> allProfiles,
-    required ArProfileModel currentProfile
+    required SadShaAuroraProfileModel currentProfile
   }):this._(
     state: ProfileStates.loaded,
     allProfiles: allProfiles,
@@ -31,7 +31,7 @@ class ProfilesState {
   ProfilesState setState({
     ProfileStates? state,
     List<ProfileModel>? allProfiles,
-    ArProfileModel? currentProfile,
+    SadShaAuroraProfileModel? currentProfile,
     bool? isLoading
    })=>ProfilesState._(
     state: state??this.state,

@@ -1,8 +1,8 @@
-import 'package:aurora/utility/ar_widgets/ar_button.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_button.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/material.dart';
 
-void arAlert({required List<Widget> actions, String content=''}) {
+void sadshaAuroraAlert({required List<Widget> actions, String content=''}) {
   showDialog(
     barrierDismissible: false,
     context: Constants.kScaffoldKey.currentState!.context,
@@ -13,7 +13,7 @@ void arAlert({required List<Widget> actions, String content=''}) {
       actionsAlignment: MainAxisAlignment.center,
       actions: <Widget>[
         ...actions,
-        ArButton(title: 'Cancel', action: () => Navigator.of(context).pop()),
+        SadShaAuroraButton(title: 'Cancel', action: () => Navigator.of(context).pop()),
       ],);
   },);
 }

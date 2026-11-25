@@ -1,9 +1,9 @@
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/material.dart';
 
 import '../constants.dart';
 
-ScaffoldFeatureController<SnackBar, SnackBarClosedReason> arSnackBar({
+ScaffoldFeatureController<SnackBar, SnackBarClosedReason> sadshaAuroraSnackBar({
   required String text,
   bool isPositive = true,
   Widget? rightWidget
@@ -21,7 +21,7 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> arSnackBar({
             child: Center(
               child: Text(
                 text,
-                style: const TextStyle(color: ArColors.white, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: SadShaAuroraColors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -29,6 +29,6 @@ ScaffoldFeatureController<SnackBar, SnackBarClosedReason> arSnackBar({
         ],
       ),
     ),
-    backgroundColor: isPositive ? ArColors.green : ArColors.red,
+    backgroundColor: isPositive ? SadShaAuroraColors.green : SadShaAuroraColors.red,
   ));
 }

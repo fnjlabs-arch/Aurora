@@ -2,11 +2,11 @@ import 'dart:io';
 
 
 
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_configuration.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_configuration.dart';
 
 
 class PermissionManagerImpl implements PermissionManager{
@@ -111,7 +111,7 @@ class PermissionManagerImpl implements PermissionManager{
     }
 
     if(_globalConfig.isBacklightControllerEnabled) {
-      if (_globalConfig.arMode.name.contains(ArModeEnum.mainline.name)) {
+      if (_globalConfig.sadshaAuroraMode.name.contains(SadShaAuroraModeEnum.mainline.name)) {
         pathList.addAll([
           Constants.kMainlineModuleStatePath,
           Constants.kMainlineModuleModePath,
@@ -119,7 +119,7 @@ class PermissionManagerImpl implements PermissionManager{
         ]);
       }
 
-      if (_globalConfig.arMode == ArModeEnum.faustus) {
+      if (_globalConfig.sadshaAuroraMode == SadShaAuroraModeEnum.faustus) {
         pathList.addAll([
           Constants.kFaustusModuleBrightnessPath,
           Constants.kFaustusModuleRedPath,
@@ -133,8 +133,8 @@ class PermissionManagerImpl implements PermissionManager{
       }
     }
 
-    if(await File("${Constants.globalConfig.kTmpPath}/ar.log").exists()){
-      pathList.add("${Constants.globalConfig.kTmpPath}/ar.log");
+    if(await File("${Constants.globalConfig.kTmpPath}/sadsha-aurora.log").exists()){
+      pathList.add("${Constants.globalConfig.kTmpPath}/sadsha-aurora.log");
     }
 
     if(await File("${Constants.globalConfig.kWorkingDirectory}").exists()){

@@ -1,11 +1,11 @@
 import 'dart:io';
 
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/disable_settings/shared_disable_services.dart';
-import 'package:aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/ar_widgets/ar_snackbar.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/disable_settings/shared_disable_services.dart';
+import 'package:sadsha_aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_snackbar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'disable_state.dart';
@@ -56,7 +56,7 @@ class DisableSettingsBloc extends TerminalBaseBloc<DisableEvent,DisableSettingsS
           super.restartApp();
         }
       } else{
-        arSnackBar(text: "Something went wrong",isPositive: false);
+        sadshaAuroraSnackBar(text: "Something went wrong",isPositive: false);
         emit(state.setState(state: DisableStateStates.init));
       }
 

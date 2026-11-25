@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -9,7 +9,7 @@ import 'constants.dart';
 
 mixin GlobalMixin{
 
-  bool isMainLine()=>Constants.globalConfig.arMode.name.contains(ArModeEnum.mainline.name);
+  bool isMainLine()=>Constants.globalConfig.sadshaAuroraMode.name.contains(SadShaAuroraModeEnum.mainline.name);
 
   bool canLog()=> Constants.globalConfig.isLoggingEnabled || Constants.buildType==BuildType.debug;
 
@@ -20,19 +20,19 @@ mixin GlobalMixin{
   Future<String> getVersion() async{
     var version= (await PackageInfo.fromPlatform()).version;
     Constants.globalConfig.setInstance(
-        arVersion:version,
-        arChannel: version.split('-')[1]
+        sadshaAuroraVersion:version,
+        sadshaAuroraChannel: version.split('-')[1]
     );
     return version;
   }
   
-  List<String> kernelModules(ArModules? module){
-    ArModules arModule=module??(isMainLine()?ArModules.mainline:ArModules.faustus);
+  List<String> kernelModules(SadShaAuroraModules? module){
+    SadShaAuroraModules sadshaAuroraModule=module??(isMainLine()?SadShaAuroraModules.mainline:SadShaAuroraModules.faustus);
 
-    if(arModule==ArModules.faustus){
+    if(sadshaAuroraModule==SadShaAuroraModules.faustus){
       return ['faustus'];
     }
-    if(arModule==ArModules.mainline){
+    if(sadshaAuroraModule==SadShaAuroraModules.mainline){
       return ['asus-nb-wmi','asus-wmi','asus_nb_wmi','asus_wmi'];
     }
 
@@ -53,14 +53,14 @@ mixin GlobalMixin{
       fontFamily: 'Play',
       brightness: light ? Brightness.light : Brightness.dark,
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: ArColors.transparent,
-        foregroundColor:light?ArColors.black:ArColors.white, ),
+        backgroundColor: SadShaAuroraColors.transparent,
+        foregroundColor:light?SadShaAuroraColors.black:SadShaAuroraColors.white, ),
       textTheme:  TextTheme(
         bodyMedium: TextStyle(fontSize: 13.sp),
         headlineSmall:  TextStyle(fontSize: 13.5.sp),
         headlineLarge:  TextStyle(fontSize: 22.sp,fontWeight: FontWeight.bold),
       ).apply(
-        bodyColor: light?ArColors.black:ArColors.white,
+        bodyColor: light?SadShaAuroraColors.black:SadShaAuroraColors.white,
       )
     );
   }

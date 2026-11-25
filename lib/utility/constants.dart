@@ -1,5 +1,5 @@
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
 import 'package:flutter/material.dart';
 
 
@@ -12,7 +12,7 @@ class Constants {
 
   //files
   static const String kBatteryManager = 'battery_manager.sh';
-  static const String kArSetup = 'ar_setup.sh';
+  static const String kSadShaAuroraSetup = 'sadsha_aurora_setup.sh';
   static const String kFaustusInstaller = 'install_faustus.sh';
 
   //titles
@@ -24,7 +24,7 @@ class Constants {
 
   //commands
   static const String kPolkit = 'pkexec --disable-internal-agent';
-  static const String kArServiceStatus = 'systemctl is-enabled aurora-controller.service';
+  static const String kSadShaAuroraServiceStatus = 'systemctl is-enabled sadsha-aurora-controller.service';
   static const String kCheckSystemd = 'ps --no-headers -o comm 1';
 
   //paths
@@ -46,18 +46,18 @@ class Constants {
   static const String kOldServicePath = '/etc/systemd/system/';
   static const String kProductName = '/sys/devices/virtual/dmi/id/product_name';
   static const String kVendorName = '/sys/devices/virtual/dmi/id/sys_vendor';
-  static const String kInstalledDir = '/opt/aurora/data/flutter_assets/assets/scripts/';
-  static const String kInstalledBinary = '/usr/bin/aurora';
+  static const String kInstalledDir = '/opt/sadsha-aurora/data/flutter_assets/assets/scripts/';
+  static const String kInstalledBinary = '/usr/bin/sadsha-aurora';
   static const String kSelfLinker = '/proc/self/exe';
   static const String kBlacklistPath = '/etc/modprobe.d/';
 
   //url
-  static const String kAuroraGitUrl = "https://github.com/legacyO7/Aurora";
+  static const String kSadShaAuroraGitUrl = "https://github.com/fnjlabs-arch/Aurora";
   static const String kTerminalListUrl = "https://raw.githubusercontent.com/i3/i3/next/i3-sensible-terminal";
 
   //misc
   static const int kMinimumChargeLevel = 50;
-  static const String kServiceName = 'aurora-controller.service';
+  static const String kServiceName = 'sadsha-aurora-controller.service';
 
   //keys
   static GlobalKey<ScaffoldState> kScaffoldKey = GlobalKey<ScaffoldState>();

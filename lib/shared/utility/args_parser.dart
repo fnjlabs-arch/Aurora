@@ -2,11 +2,11 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 
-class ArArgsParser with GlobalMixin{
+class SadShaAuroraArgsParser with GlobalMixin{
 
    Future initParser(List<String> args) async{
     var parser = ArgParser();
@@ -18,7 +18,7 @@ class ArArgsParser with GlobalMixin{
       result = parser.parse(args);
     }catch(e,stackTrace){
       stdout.writeln("unknown argument");
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       exit(0);
     }
     await validateArgs(result);

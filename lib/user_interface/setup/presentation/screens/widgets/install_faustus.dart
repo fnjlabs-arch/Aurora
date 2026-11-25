@@ -1,9 +1,9 @@
-import 'package:aurora/user_interface/setup/presentation/state/setup_bloc.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_event.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_state.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/ar_widgets/placeholder.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_bloc.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_event.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_state.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -36,7 +36,7 @@ class _FaustusInstallerState extends State<FaustusInstaller>{
    return BlocBuilder<SetupBloc,SetupState>(
      builder: (BuildContext context, state) {
        if(state is SetupIncompatibleState){
-         Color setColor()=> state.isValid? ArColors.green:ArColors.red;
+         Color setColor()=> state.isValid? SadShaAuroraColors.green:SadShaAuroraColors.red;
          return Column(
            children: [
              Text("Install Faustus Module",style: Theme.of(context).textTheme.headlineSmall),

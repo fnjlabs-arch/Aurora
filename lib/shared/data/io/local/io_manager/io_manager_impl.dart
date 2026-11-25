@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
 
 
 import 'io_manager.dart';
@@ -28,7 +28,7 @@ class IOManagerImpl implements IOManager{
       FileSystemEntity fileInQuestion = await _parseFileSystemEntity(_parseFilePath(filePath));
       return (await fileInQuestion.exists() && (await fileInQuestion.stat()).type == fileType);
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       return false;
     }
   }
@@ -42,7 +42,7 @@ class IOManagerImpl implements IOManager{
         stderr.writeln("blocked!. empty content");
       }
     }catch(e,stackTrace) {
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
     }
   }
 
@@ -55,7 +55,7 @@ class IOManagerImpl implements IOManager{
         return [];
       }
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       return [];
     }
   }

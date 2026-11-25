@@ -1,10 +1,10 @@
-import 'package:aurora/user_interface/home/presentation/state/home_bloc.dart';
-import 'package:aurora/user_interface/home/presentation/state/home_state.dart';
-import 'package:aurora/utility/ar_widgets/ar_extensions.dart';
-import 'package:aurora/utility/ar_widgets/ar_top_buttons.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/user_interface/home/presentation/state/home_bloc.dart';
+import 'package:sadsha_aurora/user_interface/home/presentation/state/home_state.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_extensions.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_top_buttons.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -18,13 +18,13 @@ class HomeTopBar extends StatelessWidget with GlobalMixin {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Expanded(child: ArWindowButtons()),
+        const Expanded(child: SadShaAuroraWindowButtons()),
         Expanded(
           flex: 2,
           child: Column(
             children: [
-              Text("Aurora",style: Theme.of(context).textTheme.headlineLarge!.apply(color: context.selectedColor),),
-              Text("\tv${Constants.globalConfig.arVersion}",style: TextStyle(fontSize: 1.5.w,fontWeight: FontWeight.bold),),
+              Text("SadSha Aurora",style: Theme.of(context).textTheme.headlineLarge!.apply(color: context.selectedColor),),
+              Text("\tv${Constants.globalConfig.sadshaAuroraVersion}",style: TextStyle(fontSize: 1.5.w,fontWeight: FontWeight.bold),),
               Container(
                 decoration: BoxDecoration(
                     border: Border.all(
@@ -50,7 +50,7 @@ class HomeTopBar extends StatelessWidget with GlobalMixin {
               Text(Constants.globalConfig.deviceName,textAlign: TextAlign.end,),
                 BlocBuilder<HomeBloc, HomeState>(builder: (context,state){
                   if(state.loggingEnabled) {
-                    return const Text("logging enabled", style: TextStyle(color: ArColors.orange,fontWeight: FontWeight.bold),textAlign: TextAlign.end,);
+                    return const Text("logging enabled", style: TextStyle(color: SadShaAuroraColors.orange,fontWeight: FontWeight.bold),textAlign: TextAlign.end,);
                   }
                   return const SizedBox();
                 },)

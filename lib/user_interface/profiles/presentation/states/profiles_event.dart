@@ -5,7 +5,7 @@ abstract class ProfilesEvent {}
 class ProfilesInitEvent extends ProfilesEvent {}
 
 class ProfilesReloadEvent extends ProfilesEvent {
-  ArProfileModel profile;
+  SadShaAuroraProfileModel profile;
 
   ProfilesReloadEvent(this.profile);
 }

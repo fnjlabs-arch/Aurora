@@ -1,8 +1,8 @@
 import 'dart:async';
 
 
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
 import 'package:rxdart/rxdart.dart';
 
 
@@ -54,7 +54,7 @@ class TerminalRepoImpl extends TerminalRepo{
       List<String> output = await _terminalSource.getOutput('$command; echo \$?');
       return int.tryParse(output.last.trim())??-1;
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       return -1;
     }
 

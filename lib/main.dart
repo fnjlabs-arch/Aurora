@@ -1,46 +1,46 @@
-import 'package:aurora/shared/data/isar_manager/repository/isar_manager.dart';
-import 'package:aurora/user_interface/battery_manager/presentation/state/batter_manager_bloc.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
-import 'package:aurora/user_interface/preferences/presentation/state/preferences_bloc.dart';
-import 'package:aurora/user_interface/profiles/presentation/states/profiles_bloc.dart';
-import 'package:aurora/user_interface/theme/presentation/state/theme_bloc.dart';
-import 'package:aurora/user_interface/theme/presentation/state/theme_event.dart';
-import 'package:aurora/user_interface/theme/presentation/state/theme_state.dart';
-import 'package:aurora/user_interface/home/presentation/screens/home_screen.dart';
-import 'package:aurora/user_interface/setup/presentation/screens/setup_widgets.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_bloc.dart';
-import 'package:aurora/user_interface/terminal/presentation/state/terminal_bloc.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_manager.dart';
+import 'package:sadsha_aurora/user_interface/battery_manager/presentation/state/batter_manager_bloc.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
+import 'package:sadsha_aurora/user_interface/preferences/presentation/state/preferences_bloc.dart';
+import 'package:sadsha_aurora/user_interface/profiles/presentation/states/profiles_bloc.dart';
+import 'package:sadsha_aurora/user_interface/theme/presentation/state/theme_bloc.dart';
+import 'package:sadsha_aurora/user_interface/theme/presentation/state/theme_event.dart';
+import 'package:sadsha_aurora/user_interface/theme/presentation/state/theme_state.dart';
+import 'package:sadsha_aurora/user_interface/home/presentation/screens/home_screen.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/setup_widgets.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_bloc.dart';
+import 'package:sadsha_aurora/user_interface/terminal/presentation/state/terminal_bloc.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-import 'shared/utility/init_aurora.dart';
+import 'shared/utility/init_sadsha_aurora.dart';
 import 'user_interface/disable_services/presentation/state/disable_bloc.dart';
 import 'user_interface/home/presentation/state/home_bloc.dart';
 
 
 void main(List<String> args) async{
-  InitAurora initAurora=InitAurora();
-  await initAurora.initDI();
-  await initAurora.initParser(args);
+  InitSadShaAurora initSadShaAurora=InitSadShaAurora();
+  await initSadShaAurora.initDI();
+  await initSadShaAurora.initParser(args);
   WidgetsFlutterBinding.ensureInitialized();
-  await initAurora.setWindow();
-  await initAurora.initLogger();
+  await initSadShaAurora.setWindow();
+  await initSadShaAurora.initLogger();
   await sl<IsarManager>().initIsar();
-  runApp(const Aurora());
+  runApp(const SadShaAurora());
 }
 
-class Aurora extends StatelessWidget with GlobalMixin{
-  const Aurora({super.key});
+class SadShaAurora extends StatelessWidget with GlobalMixin{
+  const SadShaAurora({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider.value(value: sl<ArButtonCubit>()),
-        BlocProvider.value(value: sl<ArColorCubit>()),
+        BlocProvider.value(value: sl<SadShaAuroraButtonCubit>()),
+        BlocProvider.value(value: sl<SadShaAuroraColorCubit>()),
         BlocProvider.value(value: sl<TerminalBloc>()),
         BlocProvider.value(value: sl<ThemeBloc>()..add(ThemeEventInit())),
         BlocProvider.value(value: sl<PreferencesBloc>()),
@@ -51,10 +51,10 @@ class Aurora extends StatelessWidget with GlobalMixin{
                 builder: (context, orientation, deviceType) =>
                   MaterialApp(
                     debugShowCheckedModeBanner: false,
-                    title: 'Aurora',
+                    title: 'SadSha Aurora',
                     darkTheme: super.darkTheme(),
                     theme: super.lightTheme(),
-                    themeMode: state.arTheme,
+                    themeMode: state.sadshaAuroraTheme,
                     onGenerateRoute: (settings){
                       switch(settings.name){
                           case '/setup':

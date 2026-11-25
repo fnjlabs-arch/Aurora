@@ -1,10 +1,10 @@
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-class ArButton extends StatefulWidget {
-  const ArButton({
+class SadShaAuroraButton extends StatefulWidget {
+  const SadShaAuroraButton({
     super.key,
     required this.title,
     required this.action,
@@ -24,12 +24,12 @@ class ArButton extends StatefulWidget {
   final EdgeInsetsGeometry? edgeInsets;
 
   @override
-  State<ArButton> createState() {
+  State<SadShaAuroraButton> createState() {
     return _ArButtonState();
   }
 }
 
-class _ArButtonState extends State<ArButton> {
+class _ArButtonState extends State<SadShaAuroraButton> {
   late double height;
   late double width;
 
@@ -47,8 +47,8 @@ class _ArButtonState extends State<ArButton> {
   Widget build(BuildContext context) {
     _setBounds();
     return BlocProvider(
-      create: (BuildContext context) => ArButtonHoverCubit(),
-      child: BlocBuilder<ArButtonHoverCubit,bool>(
+      create: (BuildContext context) => SadShaAuroraButtonHoverCubit(),
+      child: BlocBuilder<SadShaAuroraButtonHoverCubit,bool>(
         builder: (BuildContext context, hover)=>
          Container(
           margin: widget.edgeInsets,
@@ -58,10 +58,10 @@ class _ArButtonState extends State<ArButton> {
                   height: height,
                   width: width,
                   child: LinearProgressIndicator(
-                    color: context.read<ArColorCubit>().selectedColor,
+                    color: context.read<SadShaAuroraColorCubit>().selectedColor,
                   ))
               : InkWell(
-                  onHover: context.read<ArButtonHoverCubit>().setHover,
+                  onHover: context.read<SadShaAuroraButtonHoverCubit>().setHover,
                   onTap: () async {
                     if (widget.isEnabled) {
                       await widget.action();
@@ -75,13 +75,13 @@ class _ArButtonState extends State<ArButton> {
                             color: widget.isEnabled
                               ? widget.isSelected || hover
                               ? context.selectedColor
-                              : ArColors.greyDisabled!
-                              : ArColors.grey,),
+                              : SadShaAuroraColors.greyDisabled!
+                              : SadShaAuroraColors.grey,),
                             color: widget.isEnabled
                               ? widget.isSelected
                               ? context.selectedColorWithAlpha
                               : null
-                              : ArColors.grey,
+                              : SadShaAuroraColors.grey,
                         ),
                         child: Center(
                             child:

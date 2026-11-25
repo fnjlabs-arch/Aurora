@@ -1,6 +1,6 @@
-import 'package:aurora/user_interface/preferences/presentation/screens/preferences.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/user_interface/preferences/presentation/screens/preferences.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 
 class EditPreferencesButton extends StatelessWidget with GlobalMixin {
@@ -8,7 +8,7 @@ class EditPreferencesButton extends StatelessWidget with GlobalMixin {
 
   @override
   Widget build(BuildContext context) {
-    return ArButton(
+    return SadShaAuroraButton(
       action: () async {
         showPreferencesDialog();
       },

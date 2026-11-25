@@ -1,7 +1,7 @@
 Changelogs:
 
- - maintain AR-settings while switching between OS #18
- - added an option in edit preference settings to enable systemd service to retain AR settings
+ - maintain SadSha Aurora-settings while switching between OS #18
+ - added an option in edit preference settings to enable systemd service to retain SadSha Aurora settings
  - cleaned up preferences
  - added an option to view/edit color code. Long press the Color Picker Title to enable this feature
  - grant access button fixes #16

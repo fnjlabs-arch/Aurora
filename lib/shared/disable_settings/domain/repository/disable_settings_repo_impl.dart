@@ -1,13 +1,13 @@
 
 import 'dart:io';
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/disable_settings/shared_disable_services.dart';
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/ar_widgets/ar_snackbar.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/disable_settings/shared_disable_services.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_snackbar.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 
 
 class DisableSettingsRepoImpl extends DisableSettingsRepo with TerminalMixin {
@@ -42,10 +42,10 @@ class DisableSettingsRepoImpl extends DisableSettingsRepo with TerminalMixin {
     ];
 
     List<String> uninstallAuroraCommandList=[
-      'sudo rm -rf /opt/aurora',
-      'sudo rm -rf /usr/bin/aurora',
-      'sudo rm -rf /usr/local/lib/Aurora',
-      'sudo rm -f /usr/share/applications/aurora.desktop'
+      'sudo rm -rf /opt/sadsha-aurora',
+      'sudo rm -rf /usr/bin/sadsha-aurora',
+      'sudo rm -rf /usr/local/lib/sadsha-aurora',
+      'sudo rm -f /usr/share/applications/sadsha-aurora.desktop'
     ];
     
     List<String> disableService=[
@@ -105,7 +105,7 @@ class DisableSettingsRepoImpl extends DisableSettingsRepo with TerminalMixin {
 
       bool isSuccess= await _runDisableCommand(disableCommands);
 
-      if(!await super.arServiceEnabled()) {
+      if(!await super.sadshaAuroraServiceEnabled()) {
         if (disable == DisableEnum.all || disable == DisableEnum.threshold) {
           await _disableBatteryManager();
           await _isarDelegate.setThreshold(100);
@@ -117,7 +117,7 @@ class DisableSettingsRepoImpl extends DisableSettingsRepo with TerminalMixin {
         }
 
         if(!isSuccess) {
-          arSnackBar(text: "Failed to apply setting",isPositive: false);
+          sadshaAuroraSnackBar(text: "Failed to apply setting",isPositive: false);
         }
 
         return isSuccess;

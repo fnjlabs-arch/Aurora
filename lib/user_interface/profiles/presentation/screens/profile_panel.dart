@@ -1,9 +1,9 @@
-import 'package:aurora/user_interface/profiles/presentation/screens/widgets/profile_confirmation.dart';
-import 'package:aurora/user_interface/profiles/presentation/screens/widgets/profile_dropdown.dart';
-import 'package:aurora/user_interface/profiles/presentation/states/profiles_bloc.dart';
-import 'package:aurora/utility/ar_widgets/ar_alert.dart';
-import 'package:aurora/utility/ar_widgets/ar_button.dart';
-import 'package:aurora/utility/ar_widgets/ar_extensions.dart';
+import 'package:sadsha_aurora/user_interface/profiles/presentation/screens/widgets/profile_confirmation.dart';
+import 'package:sadsha_aurora/user_interface/profiles/presentation/screens/widgets/profile_dropdown.dart';
+import 'package:sadsha_aurora/user_interface/profiles/presentation/states/profiles_bloc.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_alert.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_button.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -62,10 +62,10 @@ class _ProfilePanelState extends State<ProfilePanel> {
               if(state.currentProfile!.id!>2)
               IconButton(
                   onPressed: () {
-                    arAlert(
+                    sadshaAuroraAlert(
                         content: "Delete ${state.currentProfile!.profileName}",
                         actions: [
-                      ArButton(
+                      SadShaAuroraButton(
                           title: "Yes",
                           isSelected: true,
                           action: (){

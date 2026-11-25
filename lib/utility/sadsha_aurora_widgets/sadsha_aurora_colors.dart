@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class ArColors {
+class SadShaAuroraColors {
   static Color accentColor = green;
   static const Color black = Colors.black;
   static const Color white = Colors.white;
@@ -20,7 +20,7 @@ class ArColors {
   static const Color transparent = Colors.transparent;
 }
 
-extension ArColorExt on Color {
+extension SadShaAuroraColorExt on Color {
   int get toRed => (r * 255.0).round();
   int get toGreen => (g * 255.0).round();
   int get toBlue => (b * 255.0).round();

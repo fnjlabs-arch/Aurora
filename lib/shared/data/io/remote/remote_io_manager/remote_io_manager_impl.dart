@@ -1,5 +1,5 @@
-import 'package:aurora/shared/data/io/remote/remote_io_manager/remote_io_manager.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
+import 'package:sadsha_aurora/shared/data/io/remote/remote_io_manager/remote_io_manager.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
 import 'package:dio/dio.dart';
 
 class RemoteIOManagerImpl implements RemoteIOManager{
@@ -15,7 +15,7 @@ class RemoteIOManagerImpl implements RemoteIOManager{
     try {
       return await _dio.get(url).timeout(const Duration(seconds: 15));
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       rethrow;
     }
   }

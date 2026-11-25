@@ -1,14 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:aurora/shared/data/io/local/io_manager/io_manager.dart';
-import 'package:aurora/shared/data/isar_manager/models/ar_profile_model.dart';
-import 'package:aurora/shared/data/isar_manager/models/ar_settings_model.dart';
-import 'package:aurora/shared/data/isar_manager/repository/isar_manager.dart';
-import 'package:aurora/shared/data/model/ar_mode_model.dart';
-import 'package:aurora/shared/data/model/ar_state_model.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
+import 'package:sadsha_aurora/shared/data/io/local/io_manager/io_manager.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_profile_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_settings_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_manager.dart';
+import 'package:sadsha_aurora/shared/data/model/sadsha_aurora_mode_model.dart';
+import 'package:sadsha_aurora/shared/data/model/sadsha_aurora_state_model.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -22,10 +22,10 @@ class IsarManagerImpl implements IsarManager {
 
   final IOManager _ioManager;
 
-  ArSettingsModel _arSettingsModel=ArSettingsModel();
-  late ArProfileModel _arProfileModel;
+  SadShaAuroraSettingsModel _arSettingsModel=SadShaAuroraSettingsModel();
+  late SadShaAuroraProfileModel _arProfileModel;
 
-  List<ArProfileModel> _allProfiles=[];
+  List<SadShaAuroraProfileModel> _allProfiles=[];
 
   late  Directory _supportDir;
 
@@ -41,8 +41,8 @@ class IsarManagerImpl implements IsarManager {
     _supportDir=await getApplicationSupportDirectory();
 
     isar = await Isar.open(
-      name: 'arDB',
-      [ArSettingsModelSchema,ArProfileModelSchema],
+      name: 'sadshaAuroraDB',
+      [SadShaAuroraSettingsModelSchema,SadShaAuroraProfileModelSchema],
       directory: _supportDir.path
     );
 
@@ -55,7 +55,7 @@ class IsarManagerImpl implements IsarManager {
   }
 
   Future<bool> _validateArSettingsIsar() async{
-    return (await isar.arSettingsModels.where().findAll()).isEmpty;
+    return (await isar.sadshaAuroraSettingsModels.where().findAll()).isEmpty;
   }
 
 
@@ -63,18 +63,18 @@ class IsarManagerImpl implements IsarManager {
 
     setDefaultProfileAndSettings(){
 
-      _arSettingsModel = ArSettingsModel(
-          arTheme: 'system',
-          arVersion: '0',
+      _arSettingsModel = SadShaAuroraSettingsModel(
+          sadshaAuroraTheme: 'system',
+          sadshaAuroraVersion: '0',
           profileId: null);
 
-      _arProfileModel = ArProfileModel(
+      _arProfileModel = SadShaAuroraProfileModel(
           id: 1,
           profileName: 'Default Profile',
           threshold: 55,
           brightness: 1,
-          arState: const ArState(),
-          arMode: ArMode(colorRad: ArColors.accentColor.toARGB32(), mode: 1, speed: 0));
+          sadshaAuroraState: const SadShaAuroraState(),
+          sadshaAuroraMode: SadShaAuroraMode(colorRad: SadShaAuroraColors.accentColor.toARGB32(), mode: 1, speed: 0));
     }
 
     try {
@@ -83,8 +83,8 @@ class IsarManagerImpl implements IsarManager {
       String sharedPrefData=(await _ioManager.readFile(sharedPref)).join('');
 
       if(sharedPrefData.isNotEmpty){
-        _arSettingsModel=ArSettingsModel.fromJson(jsonDecode(sharedPrefData));
-        _arProfileModel=ArProfileModel.fromJson(jsonDecode(sharedPrefData))..id=1;
+        _arSettingsModel=SadShaAuroraSettingsModel.fromJson(jsonDecode(sharedPrefData));
+        _arProfileModel=SadShaAuroraProfileModel.fromJson(jsonDecode(sharedPrefData))..id=1;
          await _ioManager.deleteFile(sharedPref);
       }else {
         setDefaultProfileAndSettings();
@@ -92,7 +92,7 @@ class IsarManagerImpl implements IsarManager {
 
     }catch(e){
       setDefaultProfileAndSettings();
-      ArLogger.log(data: e.toString());
+      SadShaAuroraLogger.log(data: e.toString());
     }
 
 
@@ -105,18 +105,18 @@ class IsarManagerImpl implements IsarManager {
     await _validateIsar();
     if(_arSettingsModel.profileId!=null) {
       if(_arSettingsModel.id!=null || (_arSettingsModel.id==null && await _validateArSettingsIsar())) {
-        await isar.writeTxn(() => isar.arSettingsModels.put(_arSettingsModel));
+        await isar.writeTxn(() => isar.sadshaAuroraSettingsModels.put(_arSettingsModel));
         await readArSettingsIsar();
       }else{
-        stdout.writeln("ArSettingsModel already exists!");
+        stdout.writeln("SadShaAuroraSettingsModel already exists!");
       }
     }
   }
 
   @override
-  Future<ArSettingsModel?> readArSettingsIsar() async{
+  Future<SadShaAuroraSettingsModel?> readArSettingsIsar() async{
     await _validateIsar();
-    var tempModel= await isar.arSettingsModels.where().findFirst();
+    var tempModel= await isar.sadshaAuroraSettingsModels.where().findFirst();
     if(tempModel!=null) {
       _arSettingsModel=tempModel;
     }
@@ -126,20 +126,20 @@ class IsarManagerImpl implements IsarManager {
   @override
   Future deleteArSettingsIsar(int id) async{
     await _validateIsar();
-    _arSettingsModel=ArSettingsModel();
-    return await isar.arSettingsModels.delete(id);
+    _arSettingsModel=SadShaAuroraSettingsModel();
+    return await isar.sadshaAuroraSettingsModels.delete(id);
   }
 
-  /// AR Profile ISAR
+  /// SadSha Aurora Profile ISAR
   @override
-  Future writeArProfileIsar({ArProfileModel? arProfileModel}) async{
+  Future writeArProfileIsar({SadShaAuroraProfileModel? sadshaAuroraProfileModel}) async{
     await _validateIsar();
 
-    arProfileModel??=_arProfileModel;
-    await isar.writeTxn(() => isar.arProfileModels.put(arProfileModel!));
-    _arSettingsModel.profileId=arProfileModel.id;
-    if(_allProfiles.where((element) => element.id==arProfileModel!.id).isEmpty){
-      _allProfiles.add(arProfileModel);
+    sadshaAuroraProfileModel??=_arProfileModel;
+    await isar.writeTxn(() => isar.sadshaAuroraProfileModels.put(sadshaAuroraProfileModel!));
+    _arSettingsModel.profileId=sadshaAuroraProfileModel.id;
+    if(_allProfiles.where((element) => element.id==sadshaAuroraProfileModel!.id).isEmpty){
+      _allProfiles.add(sadshaAuroraProfileModel);
     }
 
     await writeArSettingsIsar();
@@ -147,7 +147,7 @@ class IsarManagerImpl implements IsarManager {
   }
 
   @override
-  Future<ArProfileModel?> readArProfileIsar({int? id}) async{
+  Future<SadShaAuroraProfileModel?> readArProfileIsar({int? id}) async{
     await _validateIsar();
 
     if(id==null) {
@@ -156,7 +156,7 @@ class IsarManagerImpl implements IsarManager {
       _arSettingsModel.profileId=id;
       await writeArSettingsIsar();
     }
-    ArProfileModel? tempModel= await isar.arProfileModels.get(id!);
+    SadShaAuroraProfileModel? tempModel= await isar.sadshaAuroraProfileModels.get(id!);
     if(tempModel!=null){
       _arProfileModel=tempModel;
     }
@@ -164,10 +164,10 @@ class IsarManagerImpl implements IsarManager {
   }
 
   @override
-  Future<List<ArProfileModel>> readAllArProfileIsar() async{
+  Future<List<SadShaAuroraProfileModel>> readAllArProfileIsar() async{
     await _validateIsar();
 
-    _allProfiles= await isar.arProfileModels.where().findAll();
+    _allProfiles= await isar.sadshaAuroraProfileModels.where().findAll();
     return _allProfiles;
   }
 
@@ -178,7 +178,7 @@ class IsarManagerImpl implements IsarManager {
     id??=_arSettingsModel.profileId;
     _allProfiles.removeWhere((element) => element.id==id!);
     await isar.writeTxn(() async {
-      await isar.arProfileModels.delete(id!);
+      await isar.sadshaAuroraProfileModels.delete(id!);
     });
   }
 
@@ -190,23 +190,23 @@ class IsarManagerImpl implements IsarManager {
       await isar.close(deleteFromDisk: true);
       _allProfiles.clear();
     }catch(e){
-      ArLogger.log(data: e.toString());
+      SadShaAuroraLogger.log(data: e.toString());
     }
   }
 
 
   @override
-  set arProfileModel(ArProfileModel value) {
-    _arProfileModel = ArProfileModel.copyModel(value);
+  set sadshaAuroraProfileModel(SadShaAuroraProfileModel value) {
+    _arProfileModel = SadShaAuroraProfileModel.copyModel(value);
   }
 
   @override
-  ArSettingsModel get arSettingsModel=> _arSettingsModel;
+  SadShaAuroraSettingsModel get sadshaAuroraSettingsModel=> _arSettingsModel;
 
   @override
-  ArProfileModel get arProfileModel=> ArProfileModel.copyModel(_arProfileModel);
+  SadShaAuroraProfileModel get sadshaAuroraProfileModel=> SadShaAuroraProfileModel.copyModel(_arProfileModel);
 
   @override
-  List<ArProfileModel> get allProfiles => _allProfiles;
+  List<SadShaAuroraProfileModel> get allProfiles => _allProfiles;
 
 }

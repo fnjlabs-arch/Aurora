@@ -1,6 +1,6 @@
-import 'package:aurora/user_interface/setup/presentation/state/setup_bloc.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_bloc.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +18,7 @@ class AskNetworkAccess extends StatelessWidget{
           padding: EdgeInsets.only(top: 20),
           child: Text("Please connect to Internet"),
         ),
-        ArButton(
+        SadShaAuroraButton(
             title: "Try Again",
             action: (){
           context.read<SetupBloc>().add(SetupEventOnUpdate(ignoreUpdate: false));

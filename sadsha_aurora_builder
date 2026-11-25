@@ -1,14 +1,14 @@
 #!/bin/bash
 
 arg=$1
-arversion='0.0.0'
+sadsha_sadsha_aurora_version='0.0.0'
 
 
 checkFlutter() {
 if command -v flutter &> /dev/null
     then
          echo installed
-         buildAurora
+         buildSadShaAurora
     else
         installFlutter
 fi
@@ -26,13 +26,13 @@ export PATH=$HOME/.pub-cache/bin:$HOME/flutter/bin:$PATH
 flutter config --enable-linux-desktop
 
 sed -i "s/BuildType.debug/BuildType.rpm/g" lib/utility/constants.dart
-buildAurora
+buildSadShaAurora
 
 }
 
 
-buildAurora(){
-echo building aurora
+buildSadShaAurora(){
+echo building sadsha-aurora
 flutter clean
 flutter pub get
 dart run build_runner build --delete-conflicting-outputs
@@ -64,7 +64,7 @@ cd -
 
 getversion(){
 flutter pub global activate cider
-arversion=$(cut -d- -f 1 <<< $(cider version))
+sadsha_sadsha_aurora_version=$(cut -d- -f 1 <<< $(cider version))
 }
 
 builddeb(){
@@ -77,10 +77,10 @@ mkdir -p debian/opt
 mkdir -p debian/usr/bin/
 mkdir -p debian/usr/share/applications
 cp -rf build/linux/x64/release/bundle debian/opt
-cp metadata/exec debian/usr/bin/aurora
-cp metadata/aurora.desktop  debian/usr/share/applications/
-mv debian/opt/bundle debian/opt/aurora
-sed -i "s/aurora_ver/$arversion/g" debian/DEBIAN/control
+cp metadata/exec debian/usr/bin/sadsha-aurora
+cp metadata/sadsha-aurora.desktop  debian/usr/share/applications/
+mv debian/opt/bundle debian/opt/sadsha-aurora
+sed -i "s/sadsha_aurora_ver/$sadsha_sadsha_aurora_version/g" debian/DEBIAN/control
 dpkg-deb --build --root-owner-group debian
 }
 
@@ -92,16 +92,16 @@ mkdir -p ~/rpmbuild/SOURCES
 cp -rf rpmbuild/* ~/rpmbuild
 cp -rf build/linux/x64/release/bundle ~/rpmbuild/SOURCES/
 cp metadata/exec ~/rpmbuild/SOURCES/bundle
-cp metadata/aurora.desktop ~/rpmbuild/SOURCES/bundle
+cp metadata/sadsha-aurora.desktop ~/rpmbuild/SOURCES/bundle
 cd ~/rpmbuild/SOURCES
-mv  bundle aurora-$arversion
-tar --create --file aurora-"$arversion".tar.gz aurora-$arversion
+mv  bundle sadsha-aurora-$sadsha_sadsha_aurora_version
+tar --create --file sadsha-aurora-"$sadsha_sadsha_aurora_version".tar.gz sadsha-aurora-$sadsha_sadsha_aurora_version
 
 cd ..
-sed -i "s/aurora_ver/$arversion/g" SPECS/aurora.spec
+sed -i "s/sadsha_aurora_ver/$sadsha_sadsha_aurora_version/g" SPECS/sadsha-aurora.spec
 cd ..
 
-rpmbuild -bs ~/rpmbuild/SPECS/aurora.spec
+rpmbuild -bs ~/rpmbuild/SPECS/sadsha-aurora.spec
 
 cp -r $HOME/rpmbuild/SRPMS/* $arg
 

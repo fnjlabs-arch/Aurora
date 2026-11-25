@@ -1,6 +1,6 @@
-import 'package:aurora/shared/data/isar_manager/models/ar_profile_model.dart';
-import 'package:aurora/shared/data/model/ar_mode_model.dart';
-import 'package:aurora/shared/data/model/ar_state_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_profile_model.dart';
+import 'package:sadsha_aurora/shared/data/model/sadsha_aurora_mode_model.dart';
+import 'package:sadsha_aurora/shared/data/model/sadsha_aurora_state_model.dart';
 import 'package:flutter/material.dart';
 
 abstract class IsarDelegate{
@@ -16,14 +16,14 @@ abstract class IsarDelegate{
   Future saveBatteryAvailability(bool value);
   Future saveBacklightAvailability(bool value);
   Future saveBacklightServiceAvailability(bool value);
-  Future<ArProfileModel> getArProfile({int? id});
+  Future<SadShaAuroraProfileModel> getArProfile({int? id});
 
   int getThreshold();
   Future setBrightness(int brightness);
-  Future setArMode({ required ArMode arMode});
-  Future setArState({ required ArState arState });
+  Future setArMode({ required SadShaAuroraMode sadshaAuroraMode});
+  Future setArState({ required SadShaAuroraState sadshaAuroraState });
   Future setThreshold(int threshold);
-  Future<ArProfileModel?> readFromProfileName(String profileName);
+  Future<SadShaAuroraProfileModel?> readFromProfileName(String profileName);
 
   Future deleteDatabase();
 }

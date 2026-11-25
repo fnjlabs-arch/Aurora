@@ -1,7 +1,7 @@
-import 'package:aurora/user_interface/preferences/presentation/state/preferences_bloc.dart';
-import 'package:aurora/user_interface/terminal/presentation/screens/terminal_screen.dart';
-import 'package:aurora/utility/ar_widgets/ar_button.dart';
-import 'package:aurora/utility/ar_widgets/ar_checkbox.dart';
+import 'package:sadsha_aurora/user_interface/preferences/presentation/state/preferences_bloc.dart';
+import 'package:sadsha_aurora/user_interface/terminal/presentation/screens/terminal_screen.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_button.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_checkbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -36,16 +36,16 @@ class _PreferencesState extends State<Preferences> {
 
               Column(
                 children: [
-                  ArCheckbox(text: "Enable Battery Manager", isSelected: state.isBatteryManagerEnabled, onChange: (_) {
+                  SadShaAuroraCheckbox(text: "Enable Battery Manager", isSelected: state.isBatteryManagerEnabled, onChange: (_) {
                     context.read<PreferencesBloc>().add(PreferencesSetEvent(isBatteryManagerEnabled: !state.isBatteryManagerEnabled));
                   }),
 
-                  ArCheckbox(text: "Enable Keyboard Backlight Controller", isSelected: state.isBacklightControllerEnabled, onChange: (_) {
+                  SadShaAuroraCheckbox(text: "Enable Keyboard Backlight Controller", isSelected: state.isBacklightControllerEnabled, onChange: (_) {
                     context.read<PreferencesBloc>().add(PreferencesSetEvent(isBacklightControllerEnabled: !state.isBacklightControllerEnabled));
                   }),
 
                   if(state.isBacklightControllerEnabled)
-                  ArCheckbox(text: "Enable Keyboard Backlight Controller Service", isSelected: state.isBacklightControllerServiceEnabled, onChange: (_) {
+                  SadShaAuroraCheckbox(text: "Enable Keyboard Backlight Controller Service", isSelected: state.isBacklightControllerServiceEnabled, onChange: (_) {
                     context.read<PreferencesBloc>().add(PreferencesSetEvent(isBacklightControllerServiceEnabled: !state.isBacklightControllerServiceEnabled));
                   }),
 
@@ -54,7 +54,7 @@ class _PreferencesState extends State<Preferences> {
 
               state.isLoading?
                   const Expanded(child: TerminalScreen()):
-                  ArButton(
+                  SadShaAuroraButton(
                       title: "Save Preference",
                       animate: false,
                       action: () {

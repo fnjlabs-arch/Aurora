@@ -1,7 +1,7 @@
-import 'package:aurora/user_interface/setup/presentation/screens/widgets/changelog_container.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_bloc.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/widgets/changelog_container.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_bloc.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,10 +28,10 @@ class UpdateWidget extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.min,
           children: [
-            ArButton(
+            SadShaAuroraButton(
                 isSelected: true,
                 title: "Download\nupdate", action:() => context.read<SetupBloc>().add(SetupEventLaunch())),
-            ArButton(
+            SadShaAuroraButton(
                 edgeInsets: const EdgeInsets.only(left: 10),
                 title: "Ignore",
                 action: (){

@@ -1,12 +1,12 @@
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/presentation/url_launcher.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/presentation/url_launcher.dart';
 
-import 'package:aurora/user_interface/home/domain/home_repo.dart';
-import 'package:aurora/user_interface/home/presentation/state/home_event.dart';
-import 'package:aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_configuration.dart';
+import 'package:sadsha_aurora/user_interface/home/domain/home_repo.dart';
+import 'package:sadsha_aurora/user_interface/home/presentation/state/home_event.dart';
+import 'package:sadsha_aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_configuration.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,7 +58,7 @@ class HomeBloc extends TerminalBaseBloc<HomeEvent,HomeState> {
   void _enableLogging(Emitter emit){
     _globalConfig.isLoggingEnabled=!_globalConfig.isLoggingEnabled;
     if(!kDebugMode) {
-      InitAurora().initLogger();
+      InitSadShaAurora().initLogger();
     }
     emit(state.setState(loggingEnabled: _globalConfig.isLoggingEnabled));
   }

@@ -1,4 +1,4 @@
 #!/bin/sh
 
-chmod +x /usr/bin/aurora
+chmod +x /usr/bin/sadsha-aurora
 exit 0

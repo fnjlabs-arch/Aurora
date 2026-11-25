@@ -1,13 +1,13 @@
 
-import 'package:aurora/shared/data/isar_manager/models/ar_profile_model.dart';
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
-import 'package:aurora/user_interface/keyboard_settings/domain/repositories/keyboard_settings_repo.dart';
-import 'package:aurora/user_interface/keyboard_settings/entity/keyboard_settings_entity.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_profile_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/domain/repositories/keyboard_settings_repo.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/entity/keyboard_settings_entity.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,8 +20,8 @@ class KeyboardSettingsBloc extends TerminalBaseBloc<KeyboardSettingsEvent,Keyboa
    on<KeyboardSettingsEventSetBrightness>((event, emit)=> _setBrightness(event.brightness,emit));
    on<KeyboardSettingsEventSetSpeed>((event, emit)=> _setSpeed(speed: event.speed,emit));
    on<KeyboardSettingsEventSetMode>((event, emit)=> _setMode(mode: event.mode,emit));
-   on<KeyboardSettingsEventSetColor>((event, emit)=> _setColor(color: event.color??ArColors.accentColor,mode: 0, emit));
-   on<KeyboardSettingsEventSetState>((event, emit) => _setStateParams(emit,arState: ArState(boot: event.boot,sleep: event.sleep,awake: event.awake)));
+   on<KeyboardSettingsEventSetColor>((event, emit)=> _setColor(color: event.color??SadShaAuroraColors.accentColor,mode: 0, emit));
+   on<KeyboardSettingsEventSetState>((event, emit) => _setStateParams(emit,sadshaAuroraState: SadShaAuroraState(boot: event.boot,sleep: event.sleep,awake: event.awake)));
    on<KeyboardSettingsEventShowColorCode>((event, emit) => _showColorCode(emit));
   }
 
@@ -32,28 +32,28 @@ class KeyboardSettingsBloc extends TerminalBaseBloc<KeyboardSettingsEvent,Keyboa
   bool _awake=false;
   bool _sleep=false;
 
-  late ArMode arMode;
+  late SadShaAuroraMode sadshaAuroraMode;
 
-  late ArProfileModel arProfileModel;
+  late SadShaAuroraProfileModel sadshaAuroraProfileModel;
 
   Future<void> _initPanel(Emitter emit) async{
-      arProfileModel=await _isarDelegate.getArProfile();
-      arMode= ArMode.copyModel(arProfileModel.arMode);
+      sadshaAuroraProfileModel=await _isarDelegate.getArProfile();
+      sadshaAuroraMode= SadShaAuroraMode.copyModel(sadshaAuroraProfileModel.sadshaAuroraMode);
       if(Constants.globalConfig.isBacklightControllerEnabled) {
-        await _setBrightness(arProfileModel.brightness, emit);
-        await _setModeParams(arMode: arMode, emit);
+        await _setBrightness(sadshaAuroraProfileModel.brightness, emit);
+        await _setModeParams(sadshaAuroraMode: sadshaAuroraMode, emit);
         if (super.isMainLine()) {
-          await _setStateParams(arState: (arProfileModel.arState).negateValue(), emit);
+          await _setStateParams(sadshaAuroraState: (sadshaAuroraProfileModel.sadshaAuroraState).negateValue(), emit);
         }
       }
   }
 
   Future<void> _setColor(Emitter emit,{required Color color,int? mode}) async {
-    arMode.color= color;
-    arMode.colorRad=color.toARGB32();
-    arMode.mode=mode??arMode.mode;
+    sadshaAuroraMode.color= color;
+    sadshaAuroraMode.colorRad=color.toARGB32();
+    sadshaAuroraMode.mode=mode??sadshaAuroraMode.mode;
 
-    await _keyboardSettingsRepo.setColor(arMode: ArMode.copyModel(arMode));
+    await _keyboardSettingsRepo.setColor(sadshaAuroraMode: SadShaAuroraMode.copyModel(sadshaAuroraMode));
     _updateState(emit);
   }
 
@@ -64,34 +64,34 @@ class KeyboardSettingsBloc extends TerminalBaseBloc<KeyboardSettingsEvent,Keyboa
 
 
   Future<void> _setMode(Emitter emit, {required int mode})async{
-    arMode.mode=mode;
-    await _keyboardSettingsRepo.setMode(arMode: arMode);
+    sadshaAuroraMode.mode=mode;
+    await _keyboardSettingsRepo.setMode(sadshaAuroraMode: sadshaAuroraMode);
     _updateState(emit);
   }
 
   Future<void> _setSpeed(Emitter emit,{required int speed}) async{
-    arMode.speed=speed;
-    await _keyboardSettingsRepo.setSpeed(arMode: arMode);
+    sadshaAuroraMode.speed=speed;
+    await _keyboardSettingsRepo.setSpeed(sadshaAuroraMode: sadshaAuroraMode);
     _updateState(emit);
   }
   
   Future<void> _setModeParams(Emitter emit,{
-    required ArMode arMode    
+    required SadShaAuroraMode sadshaAuroraMode    
   }) async{
-    this.arMode.color=arMode.color??this.arMode.color;
-    this.arMode.mode=arMode.mode??this.arMode.mode;
-    this.arMode.speed=arMode.speed??this.arMode.speed;
-    await _keyboardSettingsRepo.setModeParams(arMode: arMode);
+    this.sadshaAuroraMode.color=sadshaAuroraMode.color??this.sadshaAuroraMode.color;
+    this.sadshaAuroraMode.mode=sadshaAuroraMode.mode??this.sadshaAuroraMode.mode;
+    this.sadshaAuroraMode.speed=sadshaAuroraMode.speed??this.sadshaAuroraMode.speed;
+    await _keyboardSettingsRepo.setModeParams(sadshaAuroraMode: sadshaAuroraMode);
     _updateState(emit);
   }
   
   Future<void> _setStateParams(Emitter emit,{
-    required ArState arState
+    required SadShaAuroraState sadshaAuroraState
   }) async{
-    _boot=arState.boot==null?_boot:!arState.boot!;
-    _awake=arState.awake==null?_awake:!arState.awake!;
-    _sleep=arState.sleep==null?_sleep:!arState.sleep!;
-    await _keyboardSettingsRepo.setMainlineStateParams(arState: ArState(awake: _awake,boot: _boot,sleep: _sleep));
+    _boot=sadshaAuroraState.boot==null?_boot:!sadshaAuroraState.boot!;
+    _awake=sadshaAuroraState.awake==null?_awake:!sadshaAuroraState.awake!;
+    _sleep=sadshaAuroraState.sleep==null?_sleep:!sadshaAuroraState.sleep!;
+    await _keyboardSettingsRepo.setMainlineStateParams(sadshaAuroraState: SadShaAuroraState(awake: _awake,boot: _boot,sleep: _sleep));
     _updateState(emit);
   }
 
@@ -100,8 +100,8 @@ class KeyboardSettingsBloc extends TerminalBaseBloc<KeyboardSettingsEvent,Keyboa
   }
 
   void _updateState(Emitter emit){
-    super.setSelectedColor(arMode.color!);
-    emit(state.copyState(speed: arMode.speed,mode: arMode.mode,color: arMode.color,awake: _awake,sleep: _sleep,boot: _boot));
+    super.setSelectedColor(sadshaAuroraMode.color!);
+    emit(state.copyState(speed: sadshaAuroraMode.speed,mode: sadshaAuroraMode.mode,color: sadshaAuroraMode.color,awake: _awake,sleep: _sleep,boot: _boot));
   }
 
   bool get isSpeedBarVisible => (state.mode)>0&&(state.mode)<3&&isModeBarVisible;

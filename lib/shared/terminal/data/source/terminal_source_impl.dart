@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:rxdart/rxdart.dart';
 
 import 'terminal_source.dart';
@@ -58,7 +58,7 @@ class TerminalSourceImpl extends TerminalSource{
           await getStdErr();
 
         } catch(e,stackTrace) {
-          await ArLogger.log(data: e,stackTrace: stackTrace);
+          await SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
           _inProgress = false;
         }
 
@@ -88,7 +88,7 @@ class TerminalSourceImpl extends TerminalSource{
     for ( var line in  _lineSplitter.convert(lines)){
       _perCommandOutput.add(line);
       _terminalSink.add("${commandStatus.name} $line");
-       ArLogger.log(data: "> ${commandStatus.name} $line");
+       SadShaAuroraLogger.log(data: "> ${commandStatus.name} $line");
     }
   }
 
@@ -107,7 +107,7 @@ class TerminalSourceImpl extends TerminalSource{
       }
     }catch(e,stackTrace){
       _convertToList(lines: e.toString(),commandStatus: CommandStatus.stderr);
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
     }
     finally{
       _convertToList(lines: "process terminated",commandStatus: CommandStatus.stderr);

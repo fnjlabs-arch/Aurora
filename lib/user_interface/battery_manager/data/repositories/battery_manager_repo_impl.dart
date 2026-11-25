@@ -1,8 +1,8 @@
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 
 import 'battery_manager_repo.dart';
 
@@ -31,7 +31,7 @@ class BatteryManagerRepoImpl extends BatteryManagerRepo with TerminalMixin{
 
   @override
   Future setBatteryChargeLimit({required int limit}) async{
-    if(!await super.arServiceEnabled()){
+    if(!await super.sadshaAuroraServiceEnabled()){
       await _permissionManager.setPermissions();
     }
     await _isarDelegate.setThreshold(limit);

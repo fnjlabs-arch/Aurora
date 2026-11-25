@@ -40,7 +40,7 @@ echo "Installing faustus"
                             subjectKeyIdentifier=hash
                             authorityKeyIdentifier=keyid" >  x509.genkey
 
-                            openssl req -new -nodes -utf8 -sha512 -days 36500 -batch -x509 -config x509.genkey -outform DER -out ${filename_key}.x509 -keyout ${filename_key}.pem -subj "/CN=Aurora/"
+                            openssl req -new -nodes -utf8 -sha512 -days 36500 -batch -x509 -config x509.genkey -outform DER -out ${filename_key}.x509 -keyout ${filename_key}.pem -subj "/CN=SadSha Aurora/"
 
                     fi
 

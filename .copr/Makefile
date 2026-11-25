@@ -1,2 +1,2 @@
 srpm:
-	./aurora_builder $(outdir)
+	./sadsha_aurora_builder $(outdir)

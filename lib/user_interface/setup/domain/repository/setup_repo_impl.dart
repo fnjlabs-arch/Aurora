@@ -1,16 +1,16 @@
 import 'dart:io';
 
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/user_interface/setup/data/repository/setup_source.dart';
-import 'package:aurora/user_interface/setup/domain/repository/setup_repo.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
-import 'package:aurora/utility/ar_widgets/ar_snackbar.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/user_interface/setup/data/repository/setup_source.dart';
+import 'package:sadsha_aurora/user_interface/setup/domain/repository/setup_repo.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_snackbar.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/services.dart';
 
 class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
@@ -58,7 +58,7 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
         );
       }
     }catch(e,stackTrace){
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
     }
   }
   
@@ -66,7 +66,7 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
   Future loadSetupFiles() async{
     await _fileManager.setTmpWorkingDir();
     await _extractAsset(sourceFileName: Constants.kFaustusInstaller);
-    _setupPath = "${await _extractAsset(sourceFileName: Constants.kArSetup)} ${_globalConfig.kWorkingDirectory}";
+    _setupPath = "${await _extractAsset(sourceFileName: Constants.kSadShaAuroraSetup)} ${_globalConfig.kWorkingDirectory}";
 
     if(_globalConfig.kSecureBootEnabled! || !await super.pkexecChecker()){
       _terminalList = '" ${(await getTerminalList())} "';
@@ -86,7 +86,7 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
     if (_terminalList.isNotEmpty || _pkexec) {
       await _terminalRepo.execute("${!_pkexec ? '' : Constants.kPolkit} $_setupPath installpackages $_terminalList");
     } else {
-      arSnackBar(text: "Fetching Data Failed", isPositive: false);
+      sadshaAuroraSnackBar(text: "Fetching Data Failed", isPositive: false);
     }
   }
 
@@ -102,7 +102,7 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
       final result = await InternetAddress.lookup('www.google.com');
       return (result.isNotEmpty && result[0].rawAddress.isNotEmpty);
     } on SocketException catch (e,stackTrace) {
-      ArLogger.log(data: e,stackTrace: stackTrace);
+      SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
       return false;
     }
   }
@@ -121,9 +121,9 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
 
     if(isMainLineCompatible()){
       if(await _fileManager.thresholdPathExists() && await systemHasSystemd()){
-        _globalConfig.setInstance(arMode: ArModeEnum.mainline);
+        _globalConfig.setInstance(sadshaAuroraMode: SadShaAuroraModeEnum.mainline);
       }else{
-        _globalConfig.setInstance(arMode:  ArModeEnum.mainlineWithoutBatteryManager);
+        _globalConfig.setInstance(sadshaAuroraMode:  SadShaAuroraModeEnum.mainlineWithoutBatteryManager);
       }
       return 4;
     }
@@ -144,7 +144,7 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
       return 1;
     }
 
-    _globalConfig.setInstance(arMode: ArModeEnum.faustus);
+    _globalConfig.setInstance(sadshaAuroraMode: SadShaAuroraModeEnum.faustus);
     await  _fileManager.releaseTmpWorkingDir();
     return 0;
   }
@@ -176,7 +176,7 @@ class SetupRepoImpl extends SetupRepo with GlobalMixin, TerminalMixin{
   @override
   Future<bool> checkIfBlackListed() async{
     _blacklistedConfs= (await _fileManager.searchTextFilesInDirectory(
-        searchText: kernelModules(ArModules.mainline),
+        searchText: kernelModules(SadShaAuroraModules.mainline),
         directoryPath: Constants.kBlacklistPath)
     );
 

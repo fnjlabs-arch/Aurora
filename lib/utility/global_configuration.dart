@@ -1,11 +1,11 @@
 
-import 'ar_widgets/ar_enums.dart';
+import 'sadsha_aurora_widgets/sadsha_aurora_enums.dart';
 
 class GlobalConfig {
 
   //version
-   String? arVersion;
-   String? arChannel;
+   String? sadshaAuroraVersion;
+   String? sadshaAuroraChannel;
 
   //paths
    String? kWorkingDirectory;
@@ -13,15 +13,15 @@ class GlobalConfig {
    String? kThresholdPath;
 
   //url
-   String? kAuroraGitRawYaml;
-   String? kAuroraGitRawChangelog;
+   String? kSadShaAuroraGitRawYaml;
+   String? kSadShaAuroraGitRawChangelog;
    String? kFaustusGitUrl;
 
 
    //misc
    bool? kSecureBootEnabled = false;
    String deviceName;
-   ArModeEnum arMode;
+   SadShaAuroraModeEnum sadshaAuroraMode;
 
    //flags
    bool isLoggingEnabled;
@@ -32,15 +32,15 @@ class GlobalConfig {
 
 
    GlobalConfig({
-    this.arVersion,
-    this.arChannel,
+    this.sadshaAuroraVersion,
+    this.sadshaAuroraChannel,
     this.kWorkingDirectory,
-    this.kAuroraGitRawYaml,
-    this.kAuroraGitRawChangelog,
+    this.kSadShaAuroraGitRawYaml,
+    this.kSadShaAuroraGitRawChangelog,
     this.kSecureBootEnabled,
     this.kFaustusGitUrl,
     this.kTmpPath,
-    this.arMode=ArModeEnum.faustus,
+    this.sadshaAuroraMode=SadShaAuroraModeEnum.faustus,
     this.deviceName='',
     this.kThresholdPath,
     this.isLoggingEnabled=false,
@@ -51,16 +51,16 @@ class GlobalConfig {
   });
 
   void setInstance({
-    String? arVersion,
-    String? arChannel,
+    String? sadshaAuroraVersion,
+    String? sadshaAuroraChannel,
     String? kExecFaustusPath,
     String? kExecBatteryManagerPath,
     String? kWorkingDirectory,
-    String? kAuroraGitRawYaml,
-    String? kAuroraGitRawChangelog,
+    String? kSadShaAuroraGitRawYaml,
+    String? kSadShaAuroraGitRawChangelog,
     bool? kSecureBootEnabled,
     String? kFaustusGitUrl,
-    ArModeEnum? arMode,
+    SadShaAuroraModeEnum? sadshaAuroraMode,
     String? kTmpPath,
     String? deviceName,
     String? kThresholdPath,
@@ -71,14 +71,14 @@ class GlobalConfig {
     bool? isBacklightControllerServiceEnabled
   }){
 
-    this.arChannel= arChannel??this.arChannel;
-    this.arVersion=  arVersion??this.arVersion;
-    this.kAuroraGitRawChangelog= kAuroraGitRawChangelog?? "https://raw.githubusercontent.com/legacyO7/Aurora/${arChannel??this.arChannel}/changelog.txt";
-    this.kAuroraGitRawYaml= kAuroraGitRawYaml?? "https://raw.githubusercontent.com/legacyO7/Aurora/${arChannel??this.arChannel}/pubspec.yaml";
+    this.sadshaAuroraChannel= sadshaAuroraChannel??this.sadshaAuroraChannel;
+    this.sadshaAuroraVersion=  sadshaAuroraVersion??this.sadshaAuroraVersion;
+    this.kSadShaAuroraGitRawChangelog= kSadShaAuroraGitRawChangelog?? "https://raw.githubusercontent.com/fnjlabs-arch/Aurora/${sadshaAuroraChannel??this.sadshaAuroraChannel}/changelog.txt";
+    this.kSadShaAuroraGitRawYaml= kSadShaAuroraGitRawYaml?? "https://raw.githubusercontent.com/fnjlabs-arch/Aurora/${sadshaAuroraChannel??this.sadshaAuroraChannel}/pubspec.yaml";
     this.kSecureBootEnabled= kSecureBootEnabled??this.kSecureBootEnabled;
     this.kWorkingDirectory= kWorkingDirectory??this.kWorkingDirectory;
     this.kFaustusGitUrl=kFaustusGitUrl??'https://github.com/legacyO7/faustus.git';
-    this.arMode=arMode??this.arMode;
+    this.sadshaAuroraMode=sadshaAuroraMode??this.sadshaAuroraMode;
     this.kTmpPath=kTmpPath??this.kTmpPath;
     this.deviceName=deviceName??this.deviceName;
     this.kThresholdPath=kThresholdPath??this.kThresholdPath;

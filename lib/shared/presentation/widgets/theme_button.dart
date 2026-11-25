@@ -1,5 +1,5 @@
-import 'package:aurora/user_interface/theme/theme.dart';
-import 'package:aurora/utility/ar_widgets/ar_button.dart';
+import 'package:sadsha_aurora/user_interface/theme/theme.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,8 +22,8 @@ class _ThemeButtonState extends State<ThemeButton>{
     context.read<ThemeBloc>().add(ThemeEventInit());
   }
 
-  void setIcon(ThemeMode arTheme){
-    switch(arTheme) {
+  void setIcon(ThemeMode sadshaAuroraTheme){
+    switch(sadshaAuroraTheme) {
       case ThemeMode.system:
         icon=const Icon(Icons.light);
         tooltipText="System Theme";
@@ -46,9 +46,9 @@ class _ThemeButtonState extends State<ThemeButton>{
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeBloc, ThemeState>(
           builder:(context, state){
-            setIcon(state.arTheme);
+            setIcon(state.sadshaAuroraTheme);
             return widget.asText?
-            ArButton(
+            SadShaAuroraButton(
                 title: "Theme: $tooltipText",
                 action: ()=>context.read<ThemeBloc>().add(ThemeEventSwitch()),
                 animate: false,

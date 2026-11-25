@@ -1,5 +1,5 @@
-import 'package:aurora/user_interface/profiles/presentation/states/profiles_bloc.dart';
-import 'package:aurora/utility/ar_widgets/ar_extensions.dart';
+import 'package:sadsha_aurora/user_interface/profiles/presentation/states/profiles_bloc.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_extensions.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

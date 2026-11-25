@@ -1,8 +1,8 @@
-import 'package:aurora/user_interface/setup/presentation/screens/widgets/changelog_container.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_bloc.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/widgets/changelog_container.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_bloc.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,10 +18,10 @@ class WhatsNewWidget extends StatelessWidget{
      mainAxisSize: MainAxisSize.min,
      crossAxisAlignment: CrossAxisAlignment.stretch,
      children: [
-     Center(child: Text("Whats new in v${Constants.globalConfig.arVersion}")),
+     Center(child: Text("Whats new in v${Constants.globalConfig.sadshaAuroraVersion}")),
      changelogContainer(changelog: changelog),
      Center(
-       child: ArButton(
+       child: SadShaAuroraButton(
            title: "Okay",
            isSelected: true,
            action: (){

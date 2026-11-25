@@ -1,17 +1,17 @@
 
-import 'package:aurora/shared/utility/init_aurora.dart';
-import 'package:aurora/shared/presentation/shared_presentation.dart';
-import 'package:aurora/user_interface/preferences/presentation/screens/preferences.dart';
-import 'package:aurora/user_interface/setup/presentation/screens/setup_widgets.dart';
-import 'package:aurora/user_interface/setup/presentation/screens/widgets/ar_kernel_compatible_dialog.dart';
-import 'package:aurora/user_interface/setup/presentation/screens/widgets/revoke_faustus.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_bloc.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_event.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_state.dart';
-import 'package:aurora/utility/ar_widgets/ar_dialog.dart';
-import 'package:aurora/utility/ar_widgets/ar_top_buttons.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/utility/init_sadsha_aurora.dart';
+import 'package:sadsha_aurora/shared/presentation/shared_presentation.dart';
+import 'package:sadsha_aurora/user_interface/preferences/presentation/screens/preferences.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/setup_widgets.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/widgets/sadsha_aurora_kernel_compatible_dialog.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/widgets/revoke_faustus.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_bloc.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_event.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_state.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_dialog.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_top_buttons.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -42,7 +42,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                arTitle(),
+                sadshaAuroraTitle(),
                 Flexible(
                   child: BlocListener <SetupBloc,SetupState>(
                     listener: (_, state) {
@@ -57,7 +57,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
                       }
 
                       if(state is SetupCompatibleKernelUserBlacklisted){
-                        arDialog(
+                        sadshaAuroraDialog(
                             title: "Warning!",
                             subject:  'Your kernel might have inbuilt keyboard backlit support. But you have blacklisted \n- asus_wmi\n- asus_nb_wmi \nin \n${state.blacklistedConfs.join('\n')}'
                             '\n\nWhitelist the modules manually and  undo the changes made while blacklisting these modules.\n Ignore this message if this was intentional',
@@ -106,7 +106,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
                         }
 
                         if(state is SetupCompatibleKernel) {
-                          return const ArKernelCompatibleDialog();
+                          return const SadShaAuroraKernelCompatibleDialog();
                         }
 
                         if(state is SetupMainlineCompatibleState) {
@@ -138,7 +138,7 @@ class _SetupWizardScreenState extends State<SetupWizardScreen> {
             top: 0,
             left: 0,
             child:
-          ArWindowButtons(),),
+          SadShaAuroraWindowButtons(),),
 
            Positioned(
             top: 0,

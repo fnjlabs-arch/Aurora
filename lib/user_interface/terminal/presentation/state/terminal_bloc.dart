@@ -1,7 +1,7 @@
 
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/user_interface/terminal/presentation/state/terminal_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/user_interface/terminal/presentation/state/terminal_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'terminal_state.dart';

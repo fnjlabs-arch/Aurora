@@ -1,15 +1,15 @@
 import 'dart:io';
 
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/shared/disable_settings/shared_disable_services.dart';
-import 'package:aurora/shared/terminal/shared_terminal.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/ar_widgets/ar_logger.dart';
-import 'package:aurora/utility/ar_widgets/ar_snackbar.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/disable_settings/shared_disable_services.dart';
+import 'package:sadsha_aurora/shared/terminal/shared_terminal.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_logger.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_snackbar.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 
 import 'home_repo.dart';
 
@@ -40,12 +40,12 @@ class HomeRepoImpl extends HomeRepo with GlobalMixin, TerminalMixin{
         await _terminalRepo.execute("${Constants.kInstalledBinary} --with-root");
         exit(0);
     }else{
-      arSnackBar(text: "Can't elevate at this point",isPositive: false);
+      sadshaAuroraSnackBar(text: "Can't elevate at this point",isPositive: false);
     }
   }
 
   Future<bool> _checkAccess() async{
-    return await _permissionManager.validatePaths() &&( await super.arServiceEnabled() || !Constants.globalConfig.isBatteryManagerEnabled);
+    return await _permissionManager.validatePaths() &&( await super.sadshaAuroraServiceEnabled() || !Constants.globalConfig.isBatteryManagerEnabled);
   }
 
   @override
@@ -82,17 +82,17 @@ class HomeRepoImpl extends HomeRepo with GlobalMixin, TerminalMixin{
 
     _fileManager.setWorkingDirectory();
 
-   ArLogger.log(data: "Build Version          : ${await getVersion()}");
-   ArLogger.log(data: "Build Type             : ${Constants.buildType.name}");
-   ArLogger.log(data: "Compatible Device      : ${await _fileManager.isDeviceCompatible()}");
-   ArLogger.log(data: "Compatible Kernel      : ${await super.isKernelCompatible()}");
-   ArLogger.log(data: "Mainline Mode          : ${isMainLineCompatible()}");
-   ArLogger.log(data: "System has systemd     : ${await systemHasSystemd()}");
-   ArLogger.log(data: "Threshold Path Exists  : ${await _fileManager.thresholdPathExists()}");
-   ArLogger.log(data: "Working Directory      : ${Constants.globalConfig.kWorkingDirectory}");
+   SadShaAuroraLogger.log(data: "Build Version          : ${await getVersion()}");
+   SadShaAuroraLogger.log(data: "Build Type             : ${Constants.buildType.name}");
+   SadShaAuroraLogger.log(data: "Compatible Device      : ${await _fileManager.isDeviceCompatible()}");
+   SadShaAuroraLogger.log(data: "Compatible Kernel      : ${await super.isKernelCompatible()}");
+   SadShaAuroraLogger.log(data: "Mainline Mode          : ${isMainLineCompatible()}");
+   SadShaAuroraLogger.log(data: "System has systemd     : ${await systemHasSystemd()}");
+   SadShaAuroraLogger.log(data: "Threshold Path Exists  : ${await _fileManager.thresholdPathExists()}");
+   SadShaAuroraLogger.log(data: "Working Directory      : ${Constants.globalConfig.kWorkingDirectory}");
 
-    if(await  _ioManager.checkIfExists(filePath: "${Constants.globalConfig.kTmpPath}/ar.log", fileType: FileSystemEntityType.file)) {
-      await _terminalRepo.execute("chown \$(logname) ${Constants.globalConfig.kTmpPath}/ar.log");
+    if(await  _ioManager.checkIfExists(filePath: "${Constants.globalConfig.kTmpPath}/sadsha-aurora.log", fileType: FileSystemEntityType.file)) {
+      await _terminalRepo.execute("chown \$(logname) ${Constants.globalConfig.kTmpPath}/sadsha-aurora.log");
     }
 
   }

@@ -1,19 +1,19 @@
-import 'package:aurora/user_interface/terminal/presentation/screens/terminal_screen.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/user_interface/terminal/presentation/screens/terminal_screen.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 
-Future<dynamic> arDialog({
+Future<dynamic> sadshaAuroraDialog({
   required String title,
   required String subject,
   required VoidCallback onConfirm,
   Widget? optionalWidget,
   BuildContext? context,
   VoidCallback? onCancel,
-  Color? barrierColor=ArColors.dialogBarrierColor
+  Color? barrierColor=SadShaAuroraColors.dialogBarrierColor
 }) {
   return showDialog(
       barrierDismissible: false,
@@ -82,10 +82,10 @@ class _ArDialogBodyState extends State<_ArDialogBody> {
                               await widget.onCancel!();
                             }
                           } catch(e,stackTrace) {
-                            ArLogger.log(data: e,stackTrace: stackTrace);
+                            SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
                           } finally {
                             if(context.mounted) {
-                              context.read<ArButtonCubit>().setUnLoad();
+                              context.read<SadShaAuroraButtonCubit>().setUnLoad();
                               Navigator.pop(context);
                             }
                           }
@@ -101,20 +101,20 @@ class _ArDialogBodyState extends State<_ArDialogBody> {
                       flex: 2,
                       child: Text(widget.subject)),
                   Flexible(
-                    flex: context.watch<ArButtonCubit>().state||widget.optionalWidget!=null? 5:0,
+                    flex: context.watch<SadShaAuroraButtonCubit>().state||widget.optionalWidget!=null? 5:0,
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 1.h),
                       child: Center(child:
-                      context.watch<ArButtonCubit>().state? const TerminalScreen():
+                      context.watch<SadShaAuroraButtonCubit>().state? const TerminalScreen():
                       widget.optionalWidget??const SizedBox(height: 10,)),
                     ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(bottom: 2.h),
                     child: Center(
-                      child: BlocBuilder<ArButtonCubit,bool>(
+                      child: BlocBuilder<SadShaAuroraButtonCubit,bool>(
                         builder: (BuildContext context, state) {
-                          return ArButton(
+                          return SadShaAuroraButton(
                             title: "Okay",
                             isLoading: state,
                             isSelected: true,
@@ -122,7 +122,7 @@ class _ArDialogBodyState extends State<_ArDialogBody> {
                               try {
                                  await widget.onConfirm();
                               } catch(e,stackTrace) {
-                                ArLogger.log(data: e,stackTrace: stackTrace);
+                                SadShaAuroraLogger.log(data: e,stackTrace: stackTrace);
                               }
                             },
                           );

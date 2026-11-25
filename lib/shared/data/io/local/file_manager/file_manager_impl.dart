@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 
-import 'package:aurora/utility/global_configuration.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/utility/global_configuration.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 
 
 class FileManagerImpl extends FileManager with GlobalMixin{
@@ -48,7 +48,7 @@ class FileManagerImpl extends FileManager with GlobalMixin{
   }
 
   Future <Directory> _clearTmpWorkingDir() async{
-    Directory workingDir= Directory('${Directory.systemTemp.path}/legacy07.aurora');
+    Directory workingDir= Directory('${Directory.systemTemp.path}/com.sadsha.aurora');
     if(await workingDir.exists()){
       await workingDir.delete(recursive: true);
     }

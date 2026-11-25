@@ -1,12 +1,12 @@
 #!/bin/bash
 
-aurora_bin=/opt/aurora/aurora
+aurora_bin=/opt/sadsha-aurora/sadsha-aurora
 pre_cmd='bash -c '
 post_cmd=''
 
 
 runAurora(){
-  $pre_cmd "killall aurora; $aurora_bin $post_cmd"
+  $pre_cmd "killall sadsha-aurora; $aurora_bin $post_cmd"
 }
 
 

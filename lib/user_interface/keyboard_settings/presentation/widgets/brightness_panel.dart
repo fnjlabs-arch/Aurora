@@ -1,8 +1,8 @@
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_state.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_state.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -19,7 +19,7 @@ Widget brightnessController({required BuildContext context, required String titl
               Text(title,style: Theme.of(context).textTheme.headlineSmall,),
               Row(
                   children: Constants.brightnessTitle
-                      .map((e) => ArButton(
+                      .map((e) => SadShaAuroraButton(
                           title: e,
                           isSelected: state.brightness == Constants.brightnessTitle.indexOf(e),
                           action: () {

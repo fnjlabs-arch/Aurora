@@ -1,9 +1,9 @@
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
 import 'package:flutter/material.dart';
 
-class ArCheckbox extends StatelessWidget{
+class SadShaAuroraCheckbox extends StatelessWidget{
 
-   const ArCheckbox({
+   const SadShaAuroraCheckbox({
     required this.text,
     required this.isSelected,
     required this.onChange,
@@ -22,11 +22,11 @@ class ArCheckbox extends StatelessWidget{
     return Theme(
       data: Theme.of(context).copyWith(
           checkboxTheme: CheckboxThemeData(
-            fillColor: getMaterialColor(isSelected?ArColors.red:ArColors.transparent),
-            checkColor:  getMaterialColor(ArColors.white),
-            overlayColor:  getMaterialColor(ArColors.orange),
+            fillColor: getMaterialColor(isSelected?SadShaAuroraColors.red:SadShaAuroraColors.transparent),
+            checkColor:  getMaterialColor(SadShaAuroraColors.white),
+            overlayColor:  getMaterialColor(SadShaAuroraColors.orange),
             side: const BorderSide(
-              color: ArColors.red,
+              color: SadShaAuroraColors.red,
               width: 1,
             ),
           )

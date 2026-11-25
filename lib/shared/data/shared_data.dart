@@ -1,5 +1,5 @@
-export './model/ar_state_model.dart';
-export './model/ar_mode_model.dart';
+export './model/sadsha_aurora_state_model.dart';
+export './model/sadsha_aurora_mode_model.dart';
 export './io/local/file_manager/file_manager.dart';
 export './io/local/file_manager/file_manager_impl.dart';
 export './io/local/service_manager/service_manager.dart';
@@ -10,4 +10,4 @@ export './io/local/io_manager/io_manager.dart';
 export './io/local/io_manager/io_manager_impl.dart';
 export './io/remote/remote_io_manager/remote_io_manager_impl.dart';
 export './io/remote/remote_io_manager/remote_io_manager.dart';
-export '../utility/init_aurora.dart';
+export '../utility/init_sadsha_aurora.dart';

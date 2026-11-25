@@ -1,5 +1,5 @@
 
-import 'package:aurora/utility/ar_widgets/ar_enums.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_enums.dart';
 
 abstract class HomeRepo{
   Future<bool> requestAccess();

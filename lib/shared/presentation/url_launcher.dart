@@ -1,9 +1,9 @@
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlLauncher{
   static Future launchArUrl({String? subPath}) async {
-    var url = Uri.parse(Constants.kAuroraGitUrl+(subPath??''));
+    var url = Uri.parse(Constants.kSadShaAuroraGitUrl+(subPath??''));
     if (await canLaunchUrl(url)) {
       await launchUrl(url);
     } else {

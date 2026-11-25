@@ -1,5 +1,5 @@
 import 'dart:ui';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class KeyboardSettingsState extends Equatable{
     this.brightness=0,
     this.mode=0,
     this.speed=0,
-    this.color=ArColors.green,
+    this.color=SadShaAuroraColors.green,
     this.sleep=false,
     this.awake=false,
     this.boot=false,

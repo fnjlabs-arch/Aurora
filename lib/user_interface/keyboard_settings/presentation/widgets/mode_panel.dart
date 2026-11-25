@@ -1,10 +1,10 @@
 
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_state.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_state.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -35,7 +35,7 @@ class ModeController extends StatelessWidget with GlobalMixin{
                 Text(title,style: Theme.of(context).textTheme.headlineSmall,),
                 Row(
                     children: Constants.modeTitle.map((e) =>
-                        ArButton(
+                        SadShaAuroraButton(
                             title: e,
                             isSelected: state.mode==Constants.modeTitle.indexOf(e),
                             action: () {

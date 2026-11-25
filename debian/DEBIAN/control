@@ -1,8 +1,8 @@
-Package: Aurora
-Version: aurora_ver
+Package: sadsha-aurora
+Version: sadsha_aurora_ver
 Architecture: amd64
 Essential: no
 Priority: optional
 Depends: bash, policykit-1
-Maintainer: legacyO7
-Description:  An Alternate to Aura Sync for linux
+Maintainer: SadSha
+Description:  SadSha Aurora - an alternate to Aura Sync for Linux

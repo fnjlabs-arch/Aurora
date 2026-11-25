@@ -1,6 +1,6 @@
-import 'package:aurora/user_interface/home/presentation/state/home_bloc.dart';
-import 'package:aurora/user_interface/home/presentation/state/home_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_button.dart';
+import 'package:sadsha_aurora/user_interface/home/presentation/state/home_bloc.dart';
+import 'package:sadsha_aurora/user_interface/home/presentation/state/home_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,7 +9,7 @@ class PrivilegedRunButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
-      ArButton(title: "Run With Elevated Privileges",
+      SadShaAuroraButton(title: "Run With Elevated Privileges",
           animate: false,
           action: ()=> context.read<HomeBloc>().add(HomeEventRunAsRoot())
       );

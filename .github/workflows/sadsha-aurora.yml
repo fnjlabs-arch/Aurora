@@ -1,7 +1,7 @@
 # This workflow will do a clean install of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
-name: Aurora CI
+name: SadSha Aurora CI
 
 on:
 
@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    name: "Build Aurora"
+    name: "Build SadSha Aurora"
     runs-on: ubuntu-22.04
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -68,29 +68,29 @@ jobs:
         run:  appimage-builder --skip-tests
 
       - name: Rename AppImage
-        run: mv legacy07-latest-x86_64.AppImage aurora-linux-${{ steps.version_id.outputs.version }}.AppImage
+        run: mv sadsha-latest-x86_64.AppImage sadsha-aurora-linux-${{ steps.version_id.outputs.version }}.AppImage
 
       - name: Build debian package
         run: |
           sed -i "s/BuildType.appimage/BuildType.deb/g" lib/utility/constants.dart      
-          ./aurora_builder deb 
+          ./sadsha_aurora_builder deb 
 
       - name: Build rpm package
         if: github.ref == 'refs/heads/stable'
         run: |
           sed -i "s/BuildType.deb/BuildType.rpm/g" lib/utility/constants.dart      
-          ./aurora_builder "$PWD"    
+          ./sadsha_aurora_builder "$PWD"    
 
       - name: Combine binaries
         run: |
           mkdir output
-          if [ -f "/home/runner/rpmbuild/SRPMS/aurora-3.10.13-1.src.rpm" ]; then
+          if [ -f "/home/runner/rpmbuild/SRPMS/sadsha-aurora-3.10.13-1.src.rpm" ]; then
             echo "SRPM exists"
           else
             echo "SRPM MISSING"
           fi
   
-          mv aurora-linux-${{ steps.version_id.outputs.version }}.AppImage output/
+          mv sadsha-aurora-linux-${{ steps.version_id.outputs.version }}.AppImage output/
           mv debian.deb output/aurora_${{ steps.version_id.outputs.version }}_amd64.deb
 
       - name: Trigger Copr Build
@@ -130,7 +130,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: output/*
-          release_name: aurora-${{ steps.version_id.outputs.version }}
+          release_name: sadsha_aurora-${{ steps.version_id.outputs.version }}
           tag: ${{ steps.version_id.outputs.version }}
           body:   ${{join(steps.run_tests.outputs.*, '\n')}}${{ steps.changelog_id.outputs.changelog }}
           overwrite: true

@@ -1,7 +1,7 @@
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/user_interface/theme/presentation/state/theme_event.dart';
-import 'package:aurora/user_interface/theme/presentation/state/theme_state.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/user_interface/theme/presentation/state/theme_event.dart';
+import 'package:sadsha_aurora/user_interface/theme/presentation/state/theme_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

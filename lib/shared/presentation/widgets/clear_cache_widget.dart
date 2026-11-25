@@ -1,6 +1,6 @@
-import 'package:aurora/user_interface/terminal/presentation/state/terminal_bloc.dart';
-import 'package:aurora/utility/ar_widgets/ar_alert.dart';
-import 'package:aurora/utility/ar_widgets/ar_button.dart';
+import 'package:sadsha_aurora/user_interface/terminal/presentation/state/terminal_bloc.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_alert.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -9,14 +9,14 @@ class ClearCacheWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ArButton(
+    return SadShaAuroraButton(
       title: "Clear Cache",
       animate: false,
       action: () {
-        arAlert(
+        sadshaAuroraAlert(
             content: "Settings will be restored back to default",
             actions: [
-              ArButton(
+              SadShaAuroraButton(
                   title: "Yes",
                   action: () => context.read<TerminalBloc>().clearCache()
               )

@@ -1,6 +1,6 @@
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
-import 'package:aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
-import 'package:aurora/utility/ar_widgets/ar_extensions.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_bloc.dart';
+import 'package:sadsha_aurora/user_interface/keyboard_settings/presentation/states/keyboard_settings_event.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_extensions.dart';
 import 'package:flex_color_picker/flex_color_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

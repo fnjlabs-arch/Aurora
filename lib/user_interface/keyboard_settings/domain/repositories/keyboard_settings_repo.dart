@@ -1,7 +1,7 @@
 
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
 
 abstract class KeyboardSettingsRepo{
 
@@ -9,23 +9,23 @@ abstract class KeyboardSettingsRepo{
 
   List<int> get keys;
 
-  Future setMode({required ArMode arMode}) async =>
-      await _setArMode(arMode);
+  Future setMode({required SadShaAuroraMode sadshaAuroraMode}) async =>
+      await _setArMode(sadshaAuroraMode);
 
-  Future setColor({required ArMode arMode});
+  Future setColor({required SadShaAuroraMode sadshaAuroraMode});
 
-  Future setSpeed({required ArMode arMode}) async =>
-      await _setArMode(arMode);
+  Future setSpeed({required SadShaAuroraMode sadshaAuroraMode}) async =>
+      await _setArMode(sadshaAuroraMode);
 
-  Future setModeParams({required ArMode arMode}) async =>
-    await _setArMode(arMode);
+  Future setModeParams({required SadShaAuroraMode sadshaAuroraMode}) async =>
+    await _setArMode(sadshaAuroraMode);
 
   Future setBrightness(int brightness)async=>
     await _isarDelegate.setBrightness(brightness);
 
-  Future setMainlineStateParams({required ArState arState})async=>
-      await _isarDelegate.setArState(arState:arState);
+  Future setMainlineStateParams({required SadShaAuroraState sadshaAuroraState})async=>
+      await _isarDelegate.setArState(sadshaAuroraState:sadshaAuroraState);
 
-  Future _setArMode(ArMode arMode) async=>
-      await _isarDelegate.setArMode(arMode: arMode);
+  Future _setArMode(SadShaAuroraMode sadshaAuroraMode) async=>
+      await _isarDelegate.setArMode(sadshaAuroraMode: sadshaAuroraMode);
 }

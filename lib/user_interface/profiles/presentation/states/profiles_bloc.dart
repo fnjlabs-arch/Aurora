@@ -1,7 +1,7 @@
-import 'package:aurora/shared/data/isar_manager/models/ar_profile_model.dart';
-import 'package:aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
-import 'package:aurora/user_interface/profiles/domain/models/profile_model.dart';
-import 'package:aurora/user_interface/profiles/domain/repositories/profile_repo.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_profile_model.dart';
+import 'package:sadsha_aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
+import 'package:sadsha_aurora/user_interface/profiles/domain/models/profile_model.dart';
+import 'package:sadsha_aurora/user_interface/profiles/domain/repositories/profile_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'profiles_event.dart';
@@ -16,7 +16,7 @@ class ProfilesBloc extends TerminalBaseBloc<ProfilesEvent, ProfilesState> {
     on<ProfilesDeleteEvent>((event, emit)=>_deleteProfile(emit,id: event.id));
   }
 
-  late ArProfileModel _currentProfile;
+  late SadShaAuroraProfileModel _currentProfile;
   List<ProfileModel> _allProfiles=[];
 
   final ProfileRepo _profileRepo;
@@ -32,12 +32,12 @@ class ProfilesBloc extends TerminalBaseBloc<ProfilesEvent, ProfilesState> {
     ));
   }
 
-  Future<ArProfileModel> _getCurrentProfile() async{
+  Future<SadShaAuroraProfileModel> _getCurrentProfile() async{
     _currentProfile= await _profileRepo.getCurrentProfile();
     return _currentProfile;
   }
 
-  Future _reloadProfile(Emitter emit,ArProfileModel profile) async{
+  Future _reloadProfile(Emitter emit,SadShaAuroraProfileModel profile) async{
     if(_allProfiles.isEmpty){
       await _onInit(emit);
     }
@@ -60,7 +60,7 @@ class ProfilesBloc extends TerminalBaseBloc<ProfilesEvent, ProfilesState> {
         _currentProfile.id = null;
       }
 
-      await _profileRepo.setProfile(arProfileModel: _currentProfile);
+      await _profileRepo.setProfile(sadshaAuroraProfileModel: _currentProfile);
       await _getAllProfiles();
       await _getCurrentProfile();
     });

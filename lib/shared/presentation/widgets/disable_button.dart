@@ -1,8 +1,8 @@
-import 'package:aurora/shared/utility/init_aurora.dart';
-import 'package:aurora/user_interface/disable_services/disable_services.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/utility/init_sadsha_aurora.dart';
+import 'package:sadsha_aurora/user_interface/disable_services/disable_services.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,22 +30,22 @@ class _DisableButtonState extends State<DisableButton> {
           builder: (BuildContext context, state) {
             List<Widget> disableSettingsItems=[
               if(Constants.globalConfig.isBatteryManagerEnabled && !Constants.globalConfig.isBacklightControllerServiceEnabled)
-                ArCheckbox(
+                SadShaAuroraCheckbox(
                     text: "Disable charging threshold",
                     isSelected: state.disableThreshold,
                     onChange: (_) => _bloc.add(DisableEventCheckDisableServices(disableThreshold: !state.disableThreshold))
                 ),
 
               if(!widget.isMainLine() && !widget.isFallbackedWorkingDirectory())
-                ArCheckbox(
+                SadShaAuroraCheckbox(
                     text: "Disable faustus module",
                     isSelected: state.disableFaustusModule,
                     onChange: (_) =>
                         _bloc.add(DisableEventCheckDisableServices(disableFaustusModule: !state.disableFaustusModule))
                 ),
               if(widget.isInstalledPackage() && !widget.isFallbackedWorkingDirectory())
-                ArCheckbox(
-                    text: "Uninstall Aurora",
+                SadShaAuroraCheckbox(
+                    text: "Uninstall SadSha Aurora",
                     isSelected: state.uninstallAurora,
                     onChange: (_) =>
                         _bloc.add(DisableEventCheckDisableServices(uninstallAurora: !state.uninstallAurora))
@@ -64,9 +64,9 @@ class _DisableButtonState extends State<DisableButton> {
 
   @override
   Widget build(BuildContext context) {
-    return ArButton(
+    return SadShaAuroraButton(
       action: () async {
-        await arDialog(
+        await sadshaAuroraDialog(
             title: "Disable Services",
             subject: "Select the services to be disabled",
             optionalWidget: _selectorWindow(),

@@ -1,12 +1,12 @@
 
-# Aurora
+# SadSha Aurora
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 
-Aurora serves as an alternative to Aura Sync for GNU/Linux, offering control over keyboard backlight and charging threshold settings. This utility facilitates configuring battery thresholds and adjusting keyboard backlight color, brightness, and modes.
-Aurora only targets the ASUS TUF audience, if it worked on any other device, it is just a happy coincidence!.
+SadSha Aurora serves as an alternative to Aura Sync for GNU/Linux, offering control over keyboard backlight and charging threshold settings. This utility facilitates configuring battery thresholds and adjusting keyboard backlight color, brightness, and modes.
+SadSha Aurora only targets the ASUS TUF audience, if it worked on any other device, it is just a happy coincidence!.
 
-Aurora provides two modes
+SadSha Aurora provides two modes
 
 - **Mainline** for kernel version 6.1 +
 - **Faustus** for kernel version < 6.1
@@ -17,22 +17,18 @@ The modes will be auto-selected depending on the kernel version
 
 ## Installation
 
-Aurora stable/beta comes with an AppImage and a debian release.
-Find the latest release from [here](https://github.com/legacyO7/Aurora/releases).
+SadSha Aurora stable/beta comes with an AppImage and a debian release.
+Find the latest release from [here](https://github.com/fnjlabs-arch/Aurora/releases).
 
-Aurora stable versions are also available in Fedora copr buildsystem for x86_64 devices
-```
-sudo dnf copr enable legacy07/aurora
-sudo dnf install aurora
-```
+Fedora COPR builds are not yet published for SadSha Aurora — use the AppImage or the .deb/.rpm from Releases for now.
 
 ### Mainline Mode
 
-![App Screenshot](https://github.com/legacyO7/Aurora/blob/beta/metadata/snaps/arscreen_mainline_1.png)
+![App Screenshot](https://github.com/fnjlabs-arch/Aurora/blob/beta/metadata/snaps/arscreen_mainline_1.png)
 
 ### Faustus Mode
 
-![App Screenshot](https://github.com/legacyO7/Aurora/blob/beta/metadata/snaps/arsrceen_1.png)
+![App Screenshot](https://github.com/fnjlabs-arch/Aurora/blob/beta/metadata/snaps/arsrceen_1.png)
 
 #### Prerequisites
 
@@ -40,15 +36,15 @@ sudo dnf install aurora
 - If the module is not installed, `dkms openssl mokutil git make cmake` are required for the module installation
 
 #### First Run
-Aurora will direct you to the installation screen if the prerequisites are not satisfied on your system.
+SadSha Aurora will direct you to the installation screen if the prerequisites are not satisfied on your system.
 
-![App Screenshot](https://github.com/legacyO7/Aurora/blob/beta/metadata/snaps/arsrceen_2.png)
+![App Screenshot](https://github.com/fnjlabs-arch/Aurora/blob/beta/metadata/snaps/arsrceen_2.png)
 
-Aurora also provides an option to choose the faustus module repo. If the device is compatible with the module but isn't supported officially, you can create your own fork that adds support to your device
+SadSha Aurora also provides an option to choose the faustus module repo. If the device is compatible with the module but isn't supported officially, you can create your own fork that adds support to your device
 (Read the [documentation](https://github.com/hackbnw/faustus) for more information on the process and any potential dangers.)
-By default, Aurora uses [this fork](https://github.com/legacyO7/faustus.git) that adds support for "FA706IH"
+By default, SadSha Aurora uses [this fork](https://github.com/legacyO7/faustus.git) that adds support for "FA706IH"
 
-![App Screenshot](https://github.com/legacyO7/Aurora/blob/beta/metadata/snaps/arsrceen_3.png)
+![App Screenshot](https://github.com/fnjlabs-arch/Aurora/blob/beta/metadata/snaps/arsrceen_3.png)
 
 Secureboot enabled devices need to enroll MOK
 
@@ -95,8 +91,8 @@ Feel free to send a PR
 
 - [@legacyO7](https://www.github.com/legacyO7)
 
-#### Quires
-legacy07.git@gmail.com
+#### Questions
+Please open an issue at https://github.com/fnjlabs-arch/Aurora
 
 
 ## Credits

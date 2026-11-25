@@ -3,10 +3,10 @@ import 'package:another_xlider/models/handler.dart';
 import 'package:another_xlider/models/handler_animation.dart';
 import 'package:another_xlider/models/tooltip/tooltip.dart';
 import 'package:another_xlider/models/trackbar.dart';
-import 'package:aurora/user_interface/battery_manager/battery_manager.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/ar_widgets/ar_extensions.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/user_interface/battery_manager/battery_manager.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_extensions.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,12 +44,12 @@ class _BatteryManagerScreenState extends State<BatteryManagerScreen> {
                      decoration:  BoxDecoration(
                          shape: BoxShape.circle,
                          border: Border.all(color:  context.selectedColor,width: 5),
-                         color: ArColors.white),
+                         color: SadShaAuroraColors.white),
                      child: Center(
                        child: Text(state.batteryLevel.toString(),
                          style: const TextStyle(
                            fontWeight: FontWeight.bold,
-                           color: ArColors.black,),
+                           color: SadShaAuroraColors.black,),
                        ),
                      ))
              ),

@@ -1,7 +1,7 @@
-import 'package:aurora/user_interface/battery_manager/data/repositories/battery_manager_repo.dart';
-import 'package:aurora/user_interface/battery_manager/presentation/state/battery_manager_event.dart';
-import 'package:aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/user_interface/battery_manager/data/repositories/battery_manager_repo.dart';
+import 'package:sadsha_aurora/user_interface/battery_manager/presentation/state/battery_manager_event.dart';
+import 'package:sadsha_aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

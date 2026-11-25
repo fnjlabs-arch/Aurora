@@ -1,8 +1,8 @@
 import 'dart:ui';
 
-import 'package:aurora/shared/data/shared_data.dart';
-import 'package:aurora/utility/ar_widgets/ar_colors.dart';
-import 'package:aurora/utility/constants.dart';
+import 'package:sadsha_aurora/shared/data/shared_data.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_colors.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
 
 import 'keyboard_settings_repo.dart';
 
@@ -17,45 +17,45 @@ class KeyboardSettingsFaustusRepoImpl extends KeyboardSettingsRepo {
   List<int> get keys=>[0,1,2,3];
 
   @override
-  Future setModeParams({required ArMode arMode}) async{
-    arMode.color??=Color(arMode.colorRad!);
+  Future setModeParams({required SadShaAuroraMode sadshaAuroraMode}) async{
+    sadshaAuroraMode.color??=Color(sadshaAuroraMode.colorRad!);
 
-      await setSpeed(arMode: arMode);
-      await setColor(arMode: arMode);
+      await setSpeed(sadshaAuroraMode: sadshaAuroraMode);
+      await setColor(sadshaAuroraMode: sadshaAuroraMode);
 
   }
   
   @override
-  Future setMode({required ArMode arMode}) async{
+  Future setMode({required SadShaAuroraMode sadshaAuroraMode}) async{
 
       await _ioManager.writeToFile(
           filePath: Constants.kFaustusModuleModePath,
-          content: "${keys[arMode.mode!]}"
+          content: "${keys[sadshaAuroraMode.mode!]}"
       );
       await saveFaustusSettings();
 
-      super.setMode(arMode: arMode);
+      super.setMode(sadshaAuroraMode: sadshaAuroraMode);
   }
 
   @override
-  Future setColor({required ArMode arMode}) async {
+  Future setColor({required SadShaAuroraMode sadshaAuroraMode}) async {
 
-      Color color=arMode.color!;
+      Color color=sadshaAuroraMode.color!;
       await _ioManager.writeToFile(filePath: Constants.kFaustusModuleRedPath, content: (color.r * 255).round().toRadixString(16));
       await _ioManager.writeToFile(filePath: Constants.kFaustusModuleGreenPath, content: (color.g * 255).round().toRadixString(16));
       await _ioManager.writeToFile(filePath: Constants.kFaustusModuleBluePath, content: (color.b * 255).round().toRadixString(16));
 
-      ArColors.accentColor = color;
-      await setMode(arMode: arMode);
+      SadShaAuroraColors.accentColor = color;
+      await setMode(sadshaAuroraMode: sadshaAuroraMode);
 
   }
 
   @override
-  Future setSpeed({required ArMode arMode}) async{
+  Future setSpeed({required SadShaAuroraMode sadshaAuroraMode}) async{
      await _ioManager.writeToFile(
         filePath: Constants.kFaustusModuleSpeedPath,
-        content: "${arMode.speed}");
-     super.setSpeed(arMode: arMode);
+        content: "${sadshaAuroraMode.speed}");
+     super.setSpeed(sadshaAuroraMode: sadshaAuroraMode);
   }
 
   @override
@@ -74,7 +74,7 @@ class KeyboardSettingsFaustusRepoImpl extends KeyboardSettingsRepo {
   }
 
   @override
-  Future setMainlineStateParams({required ArState arState}) {
+  Future setMainlineStateParams({required SadShaAuroraState sadshaAuroraState}) {
     throw UnimplementedError();
   }
 

@@ -1,4 +1,4 @@
-part of '../../utility/init_aurora.dart';
+part of '../../utility/init_sadsha_aurora.dart';
 
 final sl = GetIt.I;
 
@@ -14,8 +14,8 @@ class DependencyInjection{
     sl.registerLazySingleton(() => SetupBloc(sl(), sl(), sl()));
     sl.registerLazySingleton(() => ThemeBloc(sl()));
     sl.registerLazySingleton(() => ProfilesBloc(sl()));
-    sl.registerLazySingleton(() => ArButtonCubit());
-    sl.registerLazySingleton(() => ArColorCubit());
+    sl.registerLazySingleton(() => SadShaAuroraButtonCubit());
+    sl.registerLazySingleton(() => SadShaAuroraColorCubit());
     sl.registerLazySingleton(() => PreferencesBloc(sl(), sl()));
 
     sl.registerLazySingleton<TerminalRepo>(() => TerminalRepoImpl(sl()));
@@ -39,6 +39,6 @@ class DependencyInjection{
     sl.registerLazySingleton<Dio>(() => Dio());
     sl.registerLazySingleton<GlobalConfig>(() => GlobalConfig());
 
-    ArLogger();
+    SadShaAuroraLogger();
   }
 }

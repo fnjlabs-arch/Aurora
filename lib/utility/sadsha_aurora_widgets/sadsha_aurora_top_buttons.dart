@@ -1,10 +1,10 @@
-import 'package:aurora/utility/ar_widgets/ar_extensions.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_extensions.dart';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 
 
-class ArWindowButtons extends StatelessWidget {
-  const ArWindowButtons({
+class SadShaAuroraWindowButtons extends StatelessWidget {
+  const SadShaAuroraWindowButtons({
     super.key,
   });
 

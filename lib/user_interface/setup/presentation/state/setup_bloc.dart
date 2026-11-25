@@ -1,16 +1,16 @@
 
-import 'package:aurora/shared/data/isar_manager/repository/isar_delegate.dart';
-import 'package:aurora/shared/disable_settings/shared_disable_services.dart';
-import 'package:aurora/shared/presentation/url_launcher.dart';
-import 'package:aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
-import 'package:aurora/user_interface/setup/domain/repository/setup_repo.dart';
-import 'package:aurora/user_interface/setup/presentation/screens/setup_widgets.dart';
-import 'package:aurora/user_interface/setup/presentation/state/setup_event.dart';
-import 'package:aurora/user_interface/terminal/presentation/screens/terminal_widgets.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
-import 'package:aurora/utility/constants.dart';
-import 'package:aurora/utility/global_configuration.dart';
-import 'package:aurora/utility/global_mixin.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_delegate.dart';
+import 'package:sadsha_aurora/shared/disable_settings/shared_disable_services.dart';
+import 'package:sadsha_aurora/shared/presentation/url_launcher.dart';
+import 'package:sadsha_aurora/shared/terminal/presentation/state/terminal_base_bloc.dart';
+import 'package:sadsha_aurora/user_interface/setup/domain/repository/setup_repo.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/screens/setup_widgets.dart';
+import 'package:sadsha_aurora/user_interface/setup/presentation/state/setup_event.dart';
+import 'package:sadsha_aurora/user_interface/terminal/presentation/screens/terminal_widgets.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
+import 'package:sadsha_aurora/utility/constants.dart';
+import 'package:sadsha_aurora/utility/global_configuration.dart';
+import 'package:sadsha_aurora/utility/global_mixin.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'setup_state.dart';
@@ -49,9 +49,9 @@ class SetupBloc extends TerminalBaseBloc<SetupEvent, SetupState> with GlobalMixi
     if(!_globalConfig.isBacklightControllerEnabled&&!_globalConfig.isBatteryManagerEnabled){
       emit(SetupPreferenceIncompleteState());
     }else {
-      if (_isarDelegate.getVersionFromDB() != _globalConfig.arVersion && await _setupRepo.checkInternetAccess()) {
+      if (_isarDelegate.getVersionFromDB() != _globalConfig.sadshaAuroraVersion && await _setupRepo.checkInternetAccess()) {
         emit(SetupWhatsNewState(await _fetchChangelog()));
-        await _isarDelegate.saveVersion(_globalConfig.arVersion!);
+        await _isarDelegate.saveVersion(_globalConfig.sadshaAuroraVersion!);
       } else {
         await _checkForUpdates(emit);
       }
@@ -131,7 +131,7 @@ class SetupBloc extends TerminalBaseBloc<SetupEvent, SetupState> with GlobalMixi
         emit(previousState);
       }
     }else{
-      _globalConfig.setInstance(arMode: ArModeEnum.faustus);
+      _globalConfig.setInstance(sadshaAuroraMode: SadShaAuroraModeEnum.faustus);
       if(await _setupRepo.checkFaustusFolder()) {
         emit(SetupCompatibleState());
       }else{
@@ -141,7 +141,7 @@ class SetupBloc extends TerminalBaseBloc<SetupEvent, SetupState> with GlobalMixi
   }
 
   void _enterBatteryManagerMode(Emitter emit){
-    _globalConfig.setInstance(arMode: ArModeEnum.batteryManager);
+    _globalConfig.setInstance(sadshaAuroraMode: SadShaAuroraModeEnum.batteryManager);
 
     emit(SetupCompatibleState());
   }
@@ -151,7 +151,7 @@ class SetupBloc extends TerminalBaseBloc<SetupEvent, SetupState> with GlobalMixi
     if(BuildType.rpm==Constants.buildType) return false;
 
     var liveVersion=  _setupRepo.convertVersionToInt(await _setupRepo.getAuroraLiveVersion());
-    var currentVersion= _setupRepo.convertVersionToInt(_globalConfig.arVersion!);
+    var currentVersion= _setupRepo.convertVersionToInt(_globalConfig.sadshaAuroraVersion!);
 
     if(liveVersion==0||currentVersion==0) {
       return false;
@@ -228,7 +228,7 @@ class SetupBloc extends TerminalBaseBloc<SetupEvent, SetupState> with GlobalMixi
         emit(SetupCompatibleState());
       } else {
         emit(state.copyState(isValid: true));
-        arSnackBar(text: "That didn't go as planned!", isPositive: false);
+        sadshaAuroraSnackBar(text: "That didn't go as planned!", isPositive: false);
       }
     }
   }

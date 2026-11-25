@@ -1,7 +1,7 @@
-import 'package:aurora/shared/data/isar_manager/models/ar_profile_model.dart';
-import 'package:aurora/shared/data/isar_manager/repository/isar_manager.dart';
-import 'package:aurora/user_interface/profiles/domain/models/profile_model.dart';
-import 'package:aurora/user_interface/profiles/domain/repositories/profile_repo.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/models/sadsha_aurora_profile_model.dart';
+import 'package:sadsha_aurora/shared/data/isar_manager/repository/isar_manager.dart';
+import 'package:sadsha_aurora/user_interface/profiles/domain/models/profile_model.dart';
+import 'package:sadsha_aurora/user_interface/profiles/domain/repositories/profile_repo.dart';
 
 class ProfileRepoImpl implements ProfileRepo{
 
@@ -16,18 +16,18 @@ class ProfileRepoImpl implements ProfileRepo{
   }
 
   @override
-  Future<ArProfileModel> getCurrentProfile() async{
+  Future<SadShaAuroraProfileModel> getCurrentProfile() async{
     return (await _isarManager.readArProfileIsar())!;
   }
 
   @override
-  Future<ArProfileModel> loadProfile(int id) async{
+  Future<SadShaAuroraProfileModel> loadProfile(int id) async{
     return (await _isarManager.readArProfileIsar(id:id))!;
   }
 
   @override
-  Future setProfile({required ArProfileModel arProfileModel}) async{
-    await _isarManager.writeArProfileIsar(arProfileModel: arProfileModel);
+  Future setProfile({required SadShaAuroraProfileModel sadshaAuroraProfileModel}) async{
+    await _isarManager.writeArProfileIsar(sadshaAuroraProfileModel: sadshaAuroraProfileModel);
   }
 
   @override

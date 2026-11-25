@@ -1,17 +1,17 @@
 import 'package:another_stepper/dto/stepper_data.dart';
-import 'package:aurora/utility/ar_widgets/ar_widgets.dart';
+import 'package:sadsha_aurora/utility/sadsha_aurora_widgets/sadsha_aurora_widgets.dart';
 import 'package:flutter/material.dart';
 
 Widget stepperIcon({required int stepValue, required int index}){
   return stepValue==index?
    const Icon(
     Icons.done_outline_rounded,
-    color:ArColors.purpleLight,
+    color:SadShaAuroraColors.purpleLight,
   ):
   stepValue>index?
   const Icon(
     Icons.done,
-    color: ArColors.green,
+    color: SadShaAuroraColors.green,
   ):
   const Icon(
     Icons.flag
@@ -25,7 +25,7 @@ StepperData stepperListData({
   return StepperData(
       title: StepperText(
         text,
-        textStyle: const TextStyle(color: ArColors.white),
+        textStyle: const TextStyle(color: SadShaAuroraColors.white),
       ),
       subtitle: StepperText(''),
       iconWidget: stepperIcon(
